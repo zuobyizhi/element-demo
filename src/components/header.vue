@@ -1,6 +1,6 @@
 <template>
 	<div class="main-header">
-    <ul>
+    <!--ul>
       <li :class="{active: Number(curTab) === 1}" @click='curTabChange(1)'>
         <router-link to="/">首页</router-link>
       </li>
@@ -24,6 +24,31 @@
       <li v-if="bLogin" :class="{active: Number(curTab) === 7}" @click='curTabChange(7)'>
         <a href="javascript:;" @click="logout">退出</a>
       </li>
+    </ul-->
+    <ul>
+      <li :class="{active: cmpPath('/')}">
+        <router-link to="/">首页</router-link>
+      </li>
+      <li :class="{active: cmpPath('/fontreference')}">
+        <router-link to="fontreference">字体参考</router-link>
+      </li>
+      <li :class="{active: cmpPath('/tomato')}">
+        <router-link to="tomato">计时器</router-link>
+      </li>
+      <li :class="{active: cmpPath('/todolist')}">
+        <router-link to="todolist">备忘</router-link>
+      </li>
+    </ul>
+    <ul style="position: absolute; right: 20px">
+      <li :class="{active: cmpPath('/register')}" v-if="!bLogin">
+        <router-link to="register">注册</router-link>
+      </li>
+      <li :class="{active: cmpPath('/login')}" v-if="!bLogin">
+        <router-link to="login">登录</router-link>
+      </li>
+      <li v-if="bLogin">
+        <a href="javascript:;" @click="logout">退出</a>
+      </li>
     </ul>
 	</div>
 </template>
@@ -33,67 +58,40 @@ export default {
   name: 'hello',
   data () {
     return {
-      curTab: this.$store.state.curTab || 1,
       bLogin: false
     }
   },
   methods: {
-    curTabChange (i) {
-      this.curTab = i
-      this.$store.state.curTab = this.curTab
-      window.localStorage.setItem('curTab', this.curTab)
-    },
     logout () {
-      this.setCookie('uid', '', new Date(Date.now() - 1))
-      this.$router.push({path: '/login'})
-      this.chkLogin()
-      this.curTab = 5
+      var url = this.HOST + '/users/logout'
+      this.$http.get(url).then(res => {
+        this.$router.push({path: '/login'})
+        this.chkLogin()
+        this.$message('退出成功')
+      }, res => {
+        console.info('调用失败')
+      })
+    },
+    cmpPath (path) {
+      const res = this.$route.path
+      return res === path
     },
     chkLogin () {
-      const acct = Number(this.getCookie('uid'))
-      console.log('uid: ' + acct)
-      if (acct > 0 && !isNaN(acct)) {
-        this.bLogin = true
-      } else {
+      var url = this.HOST + '/users/chklogin'
+      this.$http.get(url).then(res => {
+        if (res.data.code === 200) {
+          this.bLogin = true
+        } else {
+          this.$router.push({path: '/login'})
+          this.bLogin = false
+        }
+      }, res => {
+        this.$router.push({path: '/login'})
         this.bLogin = false
-      }
-    },
-    setCookie: function (cname, cvalue, exdays) {
-      var d = new Date()
-      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
-      var expires = 'expires=' + d.toUTCString()
-      console.info(cname + '=' + cvalue + '; ' + expires)
-      document.cookie = cname + '=' + cvalue + '; ' + expires
-      console.info(document.cookie)
-    },
-    getCookie: function (cname) {
-      var name = cname + '='
-      var ca = document.cookie.split(';')
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i]
-        while (c.charAt(0) === ' ') c = c.substring(1)
-        if (c.indexOf(name) !== -1) return c.substring(name.length, c.length)
-      }
-      return ''
+      })
     }
   },
   mounted () {
-    const res = this.$route.path
-    console.log(res)
-    if (res === '/') {
-      this.curTabChange(1)
-    } else if (res === '/fontreference') {
-      this.curTabChange(2)
-    } else if (res === '/tomato') {
-      this.curTabChange(3)
-    } else if (res === '/todolist') {
-      this.curTabChange(4)
-    } else if (res === '/login') {
-      this.curTabChange(5)
-    } else if (res === '/register') {
-      this.curTabChange(6)
-    }
-
     this.chkLogin()
   }
 }

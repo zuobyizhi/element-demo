@@ -6,7 +6,7 @@ import Tomato from '@/components/tomato'
 import TodoList from '@/components/todolist'
 import Register from '@/components/register'
 import Login from '@/components/login'
-import TodoListAdd from '@/components/todolistadd'
+// import TodoListAdd from '@/components/todolistadd'
 import TodoListUpdate from '@/components/todolistupdate'
 
 Vue.use(Router)
@@ -36,7 +36,8 @@ export default new Router({
     {
       path: '/todolistadd',
       name: 'todolistadd',
-      component: TodoListAdd
+      // component: TodoListAdd
+      component: TodoListUpdate
     },
     {
       path: '/login',

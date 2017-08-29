@@ -2,9 +2,15 @@
   <div class="hello">
 		<div class="btns">
       <el-button type="primary" icon="plus" @click="goToAdd"></el-button>
+      时间：
+      <el-date-picker
+      v-model="during"
+      type="daterange"
+      placeholder="选择日期范围">
+      </el-date-picker>
 			内容：
 			<el-input style="width: 200px; margin: 0 12px 0 4px" class="inp" v-model="msg"/>
-      <el-button type="primary" icon="search"  @click="getTimer">搜索</el-button>
+      <el-button type="primary" icon="search"  @click="getList">搜索</el-button>
 		</div>
 		<div class="btns" style="color: red;" v-if="errMsg !== ''">
       <label>{{errMsg}}</label>
@@ -31,8 +37,8 @@
             <td>{{item.content}}</td>
             <td>{{getDate(item.createtime)}}</td>
             <td>
-              <el-button type="primary" icon="edit" @click="updateTimer(item)">修改</el-button>
-              <el-button type="danger" icon="delete" @click="deleteTimer(item.id)">删除</el-button>
+              <el-button type="primary" icon="edit" @click="updateItem(item)">修改</el-button>
+              <el-button type="danger" icon="delete" @click="deleteItem(item.id)">删除</el-button>
             </td>
           </tr>
         </tbody>
@@ -54,6 +60,7 @@ export default {
       msg: '',
       errMsg: '',
       type: 0,
+      during: '',
       showType: 0,
       total: 0,     // 记录总条数
       display: 5,   // 每页显示条数
@@ -61,11 +68,10 @@ export default {
     }
   },
   methods: {
-    getTimer () {
-      const uid = Number(this.getCookie('uid'))
+    getList () {
       const type = Number(this.showType)
       const key = this.msg.trim()
-      var url = this.HOST + '/tomato/list?uid=' + uid
+      let url = this.HOST + '/tomato/list?'
       + '&type=' + type + '&start=' + (this.current - 1) * this.display
       + '&count=' + this.display
       if (key !== '') {
@@ -84,48 +90,35 @@ export default {
         console.info('调用失败')
       })
     },
-    addTimer () {
-      const uid = Number(this.getCookie('uid'))
-      function isNumber (obj) {
-        return Number(obj) === +obj
-      }
-      if (Number(this.type) === 0) {
-        this.errMsg = '请选择程度'
-        return
-      }
-      if (this.msg.trim() === '') {
-        this.errMsg = '内容必须非空'
-        return
-      }
-
-      var url = this.HOST + '/tomato/add?uid=' + uid + '&type=' + this.type
-      + "&content=" + this.msg.trim()
-      this.$http.get(url).then(res => {
-        console.log(res.data)
-        if (res.data.code === 200) {
-          this.getTimer()
-        }
-      }, res => {
-        console.info('调用失败')
-      })
-    },
     goToAdd () {
       this.$router.push({path: '/todolistadd'})
     },
-    updateTimer (item) {
+    updateItem (item) {
       this.$router.push({path: '/todolistupdate',
-      query: {id: item.id, content: item.content, type: item.type}})
+      query: {id: item.id}})
     },
-    deleteTimer (id) {
+    chkLogin (fnSucc, fnFail) {
+      var url = this.HOST + '/users/chklogin'
+      this.$http.get(url).then(res => {
+        if (res.data.code === 200) {
+          fnSucc()
+        } else {
+          fnFail()
+        }
+      }, res => {
+        fnFail()
+      })
+    },
+    deleteItem (id) {
       let lid = this.$layer.confirm('确认删除？', () => {
-        var url = this.HOST + '/tomato/delete?id=' + id
+        const url = this.HOST + '/tomato/delete?id=' + id
         this.$http.get(url).then(res => {
           console.log(res.data)
           if (res.data.code === 200) {
             // this.$layer.msg('删除成功', {})
             this.$message('删除成功')
             this.$layer.close(lid)
-            this.getTimer()
+            this.getList()
           }
         }, res => {
           console.info('调用失败')
@@ -133,10 +126,8 @@ export default {
       })
     },
     pagechange:function(currentPage){
-      // console.log(currentPage);
-      // ajax请求, 向后台发送 currentPage, 来获取对应的数据
       this.current = currentPage
-      this.getTimer()
+      this.getList()
     },
     getTypeName: function (type) {
       for (let obj of TYPE) {
@@ -146,49 +137,38 @@ export default {
       }
       return "普通"
     },
-    getCookie: function (cname) {
-      var name = cname + '='
-      var ca = document.cookie.split(';')
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i]
-        while (c.charAt(0) === ' ') c = c.substring(1)
-        if (c.indexOf(name) !== -1) return c.substring(name.length, c.length)
-      }
-      return ''
-    },
     getDate(shijianchuo) {
       //shijianchuo是整数，否则要parseInt转换
       let add0 = function (m){return m<10?'0'+m:m }
-      var time = new Date(shijianchuo)
-      var y = time.getFullYear()
-      var m = time.getMonth()+1
-      var d = time.getDate()
-      var h = time.getHours()
-      var mm = time.getMinutes()
-      var s = time.getSeconds()
+      let time = new Date(shijianchuo)
+      let y = time.getFullYear()
+      let m = time.getMonth()+1
+      let d = time.getDate()
+      let h = time.getHours()
+      let mm = time.getMinutes()
+      let s = time.getSeconds()
       return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s)
     }
   },
-  components: {
-    'v-paging': require('./paging.vue')
-  },
   watch: {
     showType: function () {
-      this.getTimer()
+      this.getList()
     }
   },
   mounted () {
-    const uid = Number(this.getCookie('uid') || 0)
-    if (uid <= 0) {
-      this.errMsg = '本模块请先登录'
-      return
-    }
-    this.current = Number(this.$route.query.page || 1)
-    const currentPage = this.current
-    this.showType = Number(this.$route.query.type || 0)
-    this.msg = (this.$route.query.content || '')
+    const ret = this.chkLogin(() => {
+      const query = this.$route.query
+      this.current = Number(query.page || 1)
+      const currentPage = this.current
+      this.showType = Number(query.type || 0)
+      this.msg = (query.content || '')
 
-    this.getTimer()
+      this.getList()
+    }, () => {
+      this.$router.push({path: '/login'})
+      this.$message('请先登录')
+      return
+    })
   }
 }
 </script>
