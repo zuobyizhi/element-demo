@@ -62,6 +62,7 @@
 </template>
 
 <script type="es6">
+const utils = require('../utils/utils.js')
 const TYPE = [{desc: "普通", value: 1}, {desc: "重要", value: 2}]
 export default {
   name: 'hello',
@@ -71,7 +72,7 @@ export default {
       msg: '',
       errMsg: '',
       type: 0,
-      during: '',
+      during: [],
       showType: 0,
       dialogVisible: false,
       deleteId: 0,
@@ -84,12 +85,19 @@ export default {
     getList () {
       const type = Number(this.showType)
       const key = this.msg.trim()
-      let url = this.HOST + '/tomato/list?'
-      + '&type=' + type + '&start=' + (this.current - 1) * this.display
-      + '&count=' + this.display
-      if (key !== '') {
-        url += '&key=' + key
+      let opts = {
+        type: type,
+        start: (this.current - 1) * this.display,
+        count: this.display
       }
+      if (key !== '') {
+        opts.key = key
+      }
+      if (this.during.length === 2 && this.during[0] && this.during[1]) {
+        opts.starttime = this.during[0].getTime()
+        opts.endtime = this.during[1].getTime() + utils.oneDay
+      }
+      const url = utils.makeUrl(this.HOST + '/tomato/list', opts)
       this.$http.get(url).then(res => {
         console.log(res.data)
         if (res.data.code === 200) {
@@ -122,22 +130,6 @@ export default {
         fnFail()
       })
     },
-    /* deleteItem (id) {
-      let lid = this.$layer.confirm('确认删除？', () => {
-        const url = this.HOST + '/tomato/delete?id=' + id
-        this.$http.get(url).then(res => {
-          console.log(res.data)
-          if (res.data.code === 200) {
-            // this.$layer.msg('删除成功', {})
-            this.$message('删除成功')
-            this.$layer.close(lid)
-            this.getList()
-          }
-        }, res => {
-          console.info('调用失败')
-        })
-      })
-    },*/
     deleteItem () {
       const id = this.deleteId
       const url = this.HOST + '/tomato/delete?id=' + id
@@ -167,15 +159,7 @@ export default {
     },
     getDate(shijianchuo) {
       //shijianchuo是整数，否则要parseInt转换
-      let add0 = function (m){return m<10?'0'+m:m }
-      let time = new Date(shijianchuo)
-      let y = time.getFullYear()
-      let m = time.getMonth()+1
-      let d = time.getDate()
-      let h = time.getHours()
-      let mm = time.getMinutes()
-      let s = time.getSeconds()
-      return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s)
+      return utils.getDate(shijianchuo)
     }
   },
   watch: {

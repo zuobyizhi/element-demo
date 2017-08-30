@@ -11,7 +11,7 @@
 			<input class="inp" v-model="msg"/>
 			倒计时：
 			<input class="inp" v-model="time"/>
-      <button @click="addTimer">确认</button>
+      <el-button @click="addTimer" type="primary">确认</el-button>
 		</div>
 		<div class="common-row" style="color: red;" v-if="errMsg !== ''">
       <label>{{errMsg}}</label>
@@ -38,21 +38,22 @@
             <td>{{item.msg}}</td>
             <td>{{item.time}}</td>
             <td>
-              <el-button v-show='!item.work' @click="setTimerWork(index, item.id, true)">启动</el-button>
-              <el-button v-show='item.work' @click="setTimerWork(index, item.id, false)">暂停</el-button>
-              <el-button class="deleteBtn" @click="deleteTimer(item.id)">删除</el-button>
+              <el-button type="primary" icon="edit" v-show='!item.work' @click="setTimerWork(index, item.id, true)">启动</el-button>
+              <el-button type="primary" icon="edit" v-show='item.work' @click="setTimerWork(index, item.id, false)">暂停</el-button>
+              <el-button type="danger" icon="delete" @click="deleteTimer(item.id)">删除</el-button>
             </td>
           </tr>
         </tbody>
       </table>
 		</div>
     <div class="common-row">
-      <v-paging :total="total" :current-page='current' :display='display' @pagechange="pagechange"></v-paging>
+      <el-pagination :total="total" :current-page='current' :page-size='display' @current-change="pagechange"></el-pagination>
     </div>
   </div>
 </template>
 
 <script type="es6">
+const utils = require('../utils/utils.js')
 const TYPE = [{desc: "普通", value: 1}, {desc: "重要", value: 2}]
 export default {
   name: 'hello',
@@ -70,19 +71,6 @@ export default {
     }
   },
   methods: {
-    uuid () {
-      var s = [];
-      var hexDigits = "0123456789abcdef";
-      for (var i = 0; i < 36; i++) {
-        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
-      }
-      s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
-      s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
-      s[8] = s[13] = s[18] = s[23] = "-";
-
-      var uuid = s.join("");
-      return uuid;
-    },
     getTimerLS (start, end) {
       let arr = JSON.parse(window.localStorage.getItem('timer'))
       if (arr instanceof Array && arr.length > 0) {
@@ -168,7 +156,7 @@ export default {
         return
       }
       // this.timer.push({msg: this.msg.trim(), time: this.time.trim(), work: false})
-      this.addTimerLS({id: this.uuid(), msg: this.msg.trim(), time: this.time.trim(), work: false, type: this.type})
+      this.addTimerLS({id: utils.uuid(), msg: this.msg.trim(), time: this.time.trim(), work: false, type: this.type})
       this.msg = ''
       this.time = ''
       this.errMsg = ''
@@ -207,9 +195,6 @@ export default {
       }
       return "普通"
     }
-  },
-  components: {
-    'v-paging': require('./paging.vue')
   },
   watch: {
     showType: function () {

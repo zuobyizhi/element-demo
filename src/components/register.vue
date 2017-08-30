@@ -19,6 +19,7 @@
 </template>
 
 <script>
+const utils = require('../utils/utils.js')
 export default {
   name: 'hello',
   data () {
@@ -42,7 +43,10 @@ export default {
       if (password !== pwAagin) {
         return
       }
-      var url = this.HOST + '/users/register?acct=' + acct + '&password=' + password
+      const url = utils.makeUrl(this.HOST + '/users/register', {
+        acct: acct,
+        password: password
+      })
       this.$http.get(url).then(res => {
         console.log(res.data)
         if (res.data.code === 200) {

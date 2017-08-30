@@ -15,6 +15,7 @@
 </template>
 
 <script>
+const utils = require('../utils/utils.js')
 export default {
   name: 'hello',
   data () {
@@ -33,7 +34,10 @@ export default {
       if (password === '') {
         return
       }
-      var url = this.HOST + '/users/login?acct=' + acct + '&password=' + password
+      const url = utils.makeUrl(this.HOST + '/users/login', {
+        acct: acct,
+        password: password
+      })
       this.$http.get(url).then(res => {
         // this.movieList = res.data.subjects;
         console.log(res.data)

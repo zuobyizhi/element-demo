@@ -23,6 +23,7 @@
 </template>
 
 <script>
+const utils = require('../utils/utils.js')
 export default {
   name: 'hello',
   data () {
@@ -44,8 +45,11 @@ export default {
         return
       }
 
-      const url = this.HOST + '/tomato/update?id=' + this.id + '&type=' + this.type +
-      '&content=' + this.content.trim()
+      const url = utils.makeUrl(this.HOST + '/tomato/update', {
+        id: this.id,
+        type: this.type,
+        content: this.content.trim()
+      })
       this.$http.get(url).then(res => {
         console.log(res.data)
         if (res.data.code === 200) {
@@ -70,12 +74,13 @@ export default {
         return
       }
 
-      var url = this.HOST + '/tomato/add?type=' + this.type +
-      '&content=' + this.content.trim()
+      const url = utils.makeUrl(this.HOST + '/tomato/add', {
+        type: this.type,
+        content: this.content.trim()
+      })
       this.$http.get(url).then(res => {
         console.log(res.data)
         if (res.data.code === 200) {
-          // this.$layer.msg('添加成功', {})
           this.$message('添加成功')
           this.$router.push({path: '/todolist'})
         }
