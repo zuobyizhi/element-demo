@@ -1,21 +1,22 @@
 <template>
   <div class="hello">
-		<div class="btns">
-      <el-button type="primary" icon="plus" @click="goToAdd"></el-button>
+		<div class="common-row">
+      <el-button type="primary" class="right-space" icon="plus" @click="goToAdd"></el-button>
       时间：
       <el-date-picker
       v-model="during"
       type="daterange"
-      placeholder="选择日期范围">
+      placeholder="选择日期范围"
+      class="right-space">
       </el-date-picker>
 			内容：
 			<el-input style="width: 200px; margin: 0 12px 0 4px" class="inp" v-model="msg"/>
       <el-button type="primary" icon="search"  @click="getList">搜索</el-button>
 		</div>
-		<div class="btns" style="color: red;" v-if="errMsg !== ''">
+		<div class="common-row" style="color: red;" v-if="errMsg !== ''">
       <label>{{errMsg}}</label>
 		</div>
-		<div class="btns">
+		<div class="common-row">
       <table class="table">
         <thead>
           <tr>
@@ -38,15 +39,25 @@
             <td>{{getDate(item.createtime)}}</td>
             <td>
               <el-button type="primary" icon="edit" @click="updateItem(item)">修改</el-button>
-              <el-button type="danger" icon="delete" @click="deleteItem(item.id)">删除</el-button>
+              <el-button type="danger" icon="delete" @click="dialogVisible = true; deleteId = item.id">删除</el-button>
             </td>
           </tr>
         </tbody>
       </table>
 		</div>
-    <div class="btns">
+    <div class="common-row">
       <el-pagination :total="total" :current-page='current' :page-size='display' @current-change="pagechange"></el-pagination>
     </div>
+    <el-dialog
+    title="删除"
+    :visible.sync="dialogVisible"
+    size="tiny">
+    <span>确认删除该项？</span>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="deleteItem()">确 定</el-button>
+    </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -62,6 +73,8 @@ export default {
       type: 0,
       during: '',
       showType: 0,
+      dialogVisible: false,
+      deleteId: 0,
       total: 0,     // 记录总条数
       display: 5,   // 每页显示条数
       current: 1   // 当前的页数
@@ -109,7 +122,7 @@ export default {
         fnFail()
       })
     },
-    deleteItem (id) {
+    /* deleteItem (id) {
       let lid = this.$layer.confirm('确认删除？', () => {
         const url = this.HOST + '/tomato/delete?id=' + id
         this.$http.get(url).then(res => {
@@ -123,6 +136,21 @@ export default {
         }, res => {
           console.info('调用失败')
         })
+      })
+    },*/
+    deleteItem () {
+      const id = this.deleteId
+      const url = this.HOST + '/tomato/delete?id=' + id
+      this.$http.get(url).then(res => {
+        console.log(res.data)
+        if (res.data.code === 200) {
+          this.$message('删除成功')
+          this.getList()
+          this.dialogVisible = false
+          this.deleteId = 0
+        }
+      }, res => {
+        console.info('调用失败')
       })
     },
     pagechange:function(currentPage){
@@ -175,10 +203,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.btns{
-	margin: 18px;
+.right-space {
+  margin-right: 20px;
 }
-
 select {
   height: 36px;
   border-radius: 4px;

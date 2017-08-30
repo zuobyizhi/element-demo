@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-		<div class="btns">
+		<div class="common-row">
 			程度：
       <select v-model="type">
         <option value="0">请选择...</option>
@@ -13,10 +13,10 @@
 			<input class="inp" v-model="time"/>
       <button @click="addTimer">确认</button>
 		</div>
-		<div class="btns" style="color: red;" v-if="errMsg !== ''">
+		<div class="common-row" style="color: red;" v-if="errMsg !== ''">
       <label>{{errMsg}}</label>
 		</div>
-		<div class="btns">
+		<div class="common-row">
       <table class="table">
         <thead>
           <tr>
@@ -38,15 +38,15 @@
             <td>{{item.msg}}</td>
             <td>{{item.time}}</td>
             <td>
-              <button v-show='!item.work' @click="setTimerWork(index, item.id, true)">启动</button>
-              <button v-show='item.work' @click="setTimerWork(index, item.id, false)">暂停</button>
-              <button class="deleteBtn" @click="deleteTimer(item.id)">删除</button>
+              <el-button v-show='!item.work' @click="setTimerWork(index, item.id, true)">启动</el-button>
+              <el-button v-show='item.work' @click="setTimerWork(index, item.id, false)">暂停</el-button>
+              <el-button class="deleteBtn" @click="deleteTimer(item.id)">删除</el-button>
             </td>
           </tr>
         </tbody>
       </table>
 		</div>
-    <div class="btns">
+    <div class="common-row">
       <v-paging :total="total" :current-page='current' :display='display' @pagechange="pagechange"></v-paging>
     </div>
   </div>
@@ -246,10 +246,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.btns{
-	margin: 18px;
-}
-
 h1, h2 {
   font-weight: normal;
 }

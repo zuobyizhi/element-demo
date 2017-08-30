@@ -65,13 +65,6 @@ export default {
 .Monaco {
 	font-family: "Monaco"
 }
-.btns{
-	margin: 18px;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-}
 .inp{
 	margin: 8px;
 }

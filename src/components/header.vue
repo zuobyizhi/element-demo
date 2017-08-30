@@ -1,30 +1,5 @@
 <template>
 	<div class="main-header">
-    <!--ul>
-      <li :class="{active: Number(curTab) === 1}" @click='curTabChange(1)'>
-        <router-link to="/">首页</router-link>
-      </li>
-      <li :class="{active: Number(curTab) === 2}" @click='curTabChange(2)'>
-        <router-link to="fontreference">字体参考</router-link>
-      </li>
-      <li :class="{active: Number(curTab) === 3}" @click='curTabChange(3)'>
-        <router-link to="tomato">计时器</router-link>
-      </li>
-      <li :class="{active: Number(curTab) === 4}" @click='curTabChange(4)'>
-        <router-link to="todolist">备忘</router-link>
-      </li>
-    </ul>
-    <ul style="position: absolute; right: 20px">
-      <li :class="{active: Number(curTab) === 6}" @click='curTabChange(6)' v-if="!bLogin">
-        <router-link to="register">注册</router-link>
-      </li>
-      <li :class="{active: Number(curTab) === 5}" @click='curTabChange(5)' v-if="!bLogin">
-        <router-link to="login">登录</router-link>
-      </li>
-      <li v-if="bLogin" :class="{active: Number(curTab) === 7}" @click='curTabChange(7)'>
-        <a href="javascript:;" @click="logout">退出</a>
-      </li>
-    </ul-->
     <ul>
       <li :class="{active: cmpPath('/')}">
         <router-link to="/">首页</router-link>

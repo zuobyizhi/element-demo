@@ -6,6 +6,10 @@ import router from './router'
 import store from './store/'
 import Layer from 'vue-layer'
 import VueResource from 'vue-resource'
+import Element from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+
+Vue.use(Element)
 
 Vue.use(VueResource)
 
