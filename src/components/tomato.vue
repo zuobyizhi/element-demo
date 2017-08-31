@@ -2,15 +2,15 @@
   <div class="hello">
 		<div class="common-row">
 			程度：
-      <select v-model="type">
+      <select v-model="type" class='common-select'>
         <option value="0">请选择...</option>
         <option value="1">普通</option>
         <option value="2">重要</option>
       </select>
 			内容：
-			<input class="inp" v-model="msg"/>
+			<el-input class="common-input" v-model="msg"/>
 			倒计时：
-			<input class="inp" v-model="time"/>
+			<el-input class="common-input" v-model="time"/>
       <el-button @click="addTimer" type="primary">确认</el-button>
 		</div>
 		<div class="common-row" style="color: red;" v-if="errMsg !== ''">
@@ -21,7 +21,7 @@
         <thead>
           <tr>
             <th style="width: 80px">
-              <select v-model="showType">
+              <select v-model="showType" class="common-select">
                 <option value="0">全部</option>
                 <option value="1">普通</option>
                 <option value="2">重要</option>
@@ -231,6 +231,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.common-input {
+  width: 200px;
+  margin: 0 12px 0 4px;
+}
 h1, h2 {
   font-weight: normal;
 }

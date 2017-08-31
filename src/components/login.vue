@@ -2,11 +2,11 @@
   <div class="hello">
 		<div class="btns">
       <label>帐号：</label>
-      <el-input style="width: 200px;" v-model="acct"/>
+      <el-input class="inp" v-model="acct"/>
 		</div>
 		<div class="btns">
 			<label>密码：</label>
-			<el-input style="width: 200px;" v-model="password"/>
+			<el-input class="inp" v-model="password"/>
 		</div>
 		<div class="btns">
 			<el-button type="primary" @click="login">登录</el-button>
@@ -56,6 +56,7 @@ export default {
 <style scoped>
 .inp{
 	margin: 8px;
+  width: 200px;
 }
 
 label {

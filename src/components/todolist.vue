@@ -21,7 +21,7 @@
         <thead>
           <tr>
             <th style="width: 80px">
-              <select v-model="showType">
+              <select v-model="showType" class="common-select">
                 <option value="0">全部</option>
                 <option value="1">普通</option>
                 <option value="2">重要</option>
@@ -189,10 +189,6 @@ export default {
 <style scoped>
 .right-space {
   margin-right: 20px;
-}
-select {
-  height: 36px;
-  border-radius: 4px;
 }
 
 h1, h2 {

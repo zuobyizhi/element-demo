@@ -2,7 +2,7 @@
   <div class="hello">
 		<div class="btns">
       <label>类型：</label>
-      <select v-model="type">
+      <select v-model="type" class="common-select">
         <option value="0">请选择...</option>
         <option value="1">普通</option>
         <option value="2">重要</option>
@@ -118,11 +118,6 @@ export default {
 <style scoped>
 .inp{
 	margin: 8px;
-}
-
-select {
-  height: 36px;
-  border-radius: 4px;
 }
 
 label {

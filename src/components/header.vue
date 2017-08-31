@@ -84,6 +84,7 @@ export default {
 	background-color: #20a0ff;
   box-shadow: 2px 2px 1px #ccc;
   z-index: 1000;
+  opacity: 0.9;
 }
 .active {
   // background-color: #32a973;
@@ -106,9 +107,5 @@ li {
   // padding: 0 15px;
   position: relative;
   line-height: 50px;
-}
-
-.curtab {
-	background-color: #32a973
 }
 </style>
