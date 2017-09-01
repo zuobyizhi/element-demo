@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     logout () {
-      var url = this.HOST + '/users/logout'
+      const url = this.HOST + '/users/logout'
       this.$http.get(url).then(res => {
         this.$router.push({path: '/login'})
         this.chkLogin()
@@ -52,7 +52,7 @@ export default {
       return res === path
     },
     chkLogin () {
-      var url = this.HOST + '/users/chklogin'
+      const url = this.HOST + '/users/chklogin'
       this.$http.get(url).then(res => {
         if (res.data.code === 200) {
           this.bLogin = true

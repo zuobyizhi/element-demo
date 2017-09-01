@@ -85,7 +85,7 @@ export default {
     getList () {
       const type = Number(this.showType)
       const key = this.msg.trim()
-      let opts = {
+      const opts = {
         type: type,
         start: (this.current - 1) * this.display,
         count: this.display
@@ -119,7 +119,7 @@ export default {
       query: {id: item.id}})
     },
     chkLogin (fnSucc, fnFail) {
-      var url = this.HOST + '/users/chklogin'
+      const url = this.HOST + '/users/chklogin'
       this.$http.get(url).then(res => {
         if (res.data.code === 200) {
           fnSucc()
@@ -150,7 +150,7 @@ export default {
       this.getList()
     },
     getTypeName: function (type) {
-      for (let obj of TYPE) {
+      for (const obj of TYPE) {
         if (Number(obj.value) === Number(type)) {
           return obj.desc
         }
@@ -159,7 +159,8 @@ export default {
     },
     getDate(shijianchuo) {
       //shijianchuo是整数，否则要parseInt转换
-      return utils.getDate(shijianchuo)
+      // return utils.getDate(shijianchuo)
+      return utils.stampFormat(shijianchuo, "yyyy-MM-dd hh:mm:ss")
     }
   },
   watch: {

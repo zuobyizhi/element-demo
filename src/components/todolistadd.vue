@@ -43,18 +43,7 @@ export default {
     }
   },
   methods: {
-    getCookie: function (cname) {
-      var name = cname + '='
-      var ca = document.cookie.split(';')
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i]
-        while (c.charAt(0) === ' ') c = c.substring(1)
-        if (c.indexOf(name) !== -1) return c.substring(name.length, c.length)
-      }
-      return ''
-    },
     addTimer () {
-      const uid = Number(this.getCookie('uid'))
       if (Number(this.type) === 0) {
         this.errMsg = '请选择程度'
         return
@@ -64,7 +53,7 @@ export default {
         return
       }
 
-      var url = this.HOST + '/tomato/add?uid=' + uid + '&type=' + this.type +
+      const url = this.HOST + '/tomato/add?type=' + this.type +
       '&content=' + this.msg.trim()
       this.$http.get(url).then(res => {
         console.log(res.data)

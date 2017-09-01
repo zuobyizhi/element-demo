@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     getTimerLS (start, end) {
-      let arr = JSON.parse(window.localStorage.getItem('timer'))
+      const arr = JSON.parse(window.localStorage.getItem('timer'))
       if (arr instanceof Array && arr.length > 0) {
         const st = Number(this.showType)
         if (st === 0) {
@@ -94,7 +94,7 @@ export default {
       }
     },
     deleteTimerLS (id) {
-      let arr = JSON.parse(window.localStorage.getItem('timer'))
+      const arr = JSON.parse(window.localStorage.getItem('timer'))
       if (arr instanceof Array && arr.length > 0) {
         for (let i = 0; i < arr.length; ++i) {
           if (arr[i].id === id) {
@@ -106,7 +106,7 @@ export default {
       }
     },
     setTimerWordLS (id, bWork) {
-      let arr = JSON.parse(window.localStorage.getItem('timer'))
+      const arr = JSON.parse(window.localStorage.getItem('timer'))
       if (arr instanceof Array && arr.length > 0) {
         for (let i = 0; i < arr.length; ++i) {
           if (arr[i].id === id) {
@@ -118,7 +118,7 @@ export default {
       }
     },
     setTimerTimeLS (id, time) {
-      let arr = JSON.parse(window.localStorage.getItem('timer'))
+      const arr = JSON.parse(window.localStorage.getItem('timer'))
       if (arr instanceof Array && arr.length > 0) {
         for (let i = 0; i < arr.length; ++i) {
           if (arr[i].id === id) {
@@ -162,7 +162,7 @@ export default {
       this.errMsg = ''
       this.type = ''
       // window.localStorage.setItem('timer', JSON.stringify(this.timer))
-      let currentPage = this.current - 1
+      const currentPage = this.current - 1
       this.getTimerLS(currentPage * this.display, (currentPage + 1) * this.display)
     },
     setTimerWork (i, id, bWork) {
@@ -171,11 +171,11 @@ export default {
       this.setTimerWordLS(id, bWork)
     },
     deleteTimer (id) {
-      let lid = this.$layer.confirm('确认删除？', () => {
+      const lid = this.$layer.confirm('确认删除？', () => {
         this.deleteTimerLS(id)
         this.$layer.msg('删除成功', {})
         this.$layer.close(lid)
-        let currentPage = this.current - 1
+        const currentPage = this.current - 1
         this.getTimerLS(currentPage * this.display, (currentPage + 1) * this.display)
       })
     },
@@ -188,7 +188,7 @@ export default {
       this.$router.push({path: '/tomato', query: {page: currentPage, type: this.showType}})
     },
     getTypeName: function (type) {
-      for (let obj of TYPE) {
+      for (const obj of TYPE) {
         if (Number(obj.value) === Number(type)) {
           return obj.desc
         }
@@ -205,8 +205,8 @@ export default {
     }
   },
   mounted () {
-    let self = this
-    let fn = function () {
+    const self = this
+    const fn = function () {
       for (let i = 0; i < self.timer.length; ++i) {
         if (self.timer[i].work) {
           if (Number(self.timer[i].time) > 0) {

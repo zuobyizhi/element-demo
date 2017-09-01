@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from './store/'
+// import store from './store/'
 import Layer from 'vue-layer'
 import VueResource from 'vue-resource'
 import Element from 'element-ui'
@@ -23,7 +23,7 @@ Vue.prototype.HOST = '/api'
 new Vue({
   el: '#app',
   router,
-  store,
+  // store,
   template: '<App/>',
   components: { App }
 })

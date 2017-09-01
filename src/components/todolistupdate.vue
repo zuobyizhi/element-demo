@@ -95,7 +95,7 @@ export default {
     }
     const query = this.$route.query
     this.id = Number(query.id || 0)
-    let url = this.HOST + '/tomato/getone?id=' + this.id
+    const url = this.HOST + '/tomato/getone?id=' + this.id
     this.$http.get(url).then(res => {
       console.log(res.data)
       if (res.data.code === 200) {
