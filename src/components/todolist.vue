@@ -159,8 +159,8 @@ export default {
     },
     getDate(shijianchuo) {
       //shijianchuo是整数，否则要parseInt转换
-      // return utils.getDate(shijianchuo)
       return utils.stampFormat(shijianchuo, "yyyy-MM-dd hh:mm:ss")
+      // return utils.stampFormat(shijianchuo, "yyyyyy-MMMM-dddd hhhh:mmmm:ssss mm")
     }
   },
   watch: {
