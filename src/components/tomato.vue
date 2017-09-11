@@ -2,7 +2,7 @@
   <div class="hello">
 		<div class="common-row">
 			程度：
-      <select v-model="type" class='common-select'>
+      <select v-model="type" v-focus class='common-select'>
         <option value="0">请选择...</option>
         <option value="1">普通</option>
         <option value="2">重要</option>

@@ -2,14 +2,14 @@
   <div class="hello">
 		<div class="btns">
       <label>帐号：</label>
-      <el-input class="inp" v-model="acct"/>
+      <el-input id="loginviewfocus" v-focus class="inp" v-model="acct" @keyup.enter.native="login"/>
 		</div>
 		<div class="btns">
 			<label>密码：</label>
-			<el-input class="inp" v-model="password"/>
+			<el-input class="inp" v-model="password" @keyup.enter.native="login"/>
 		</div>
 		<div class="btns">
-			<el-button type="primary" @click="login">登录</el-button>
+			<el-button type="primary" @click="login" @keyup.enter.native="login">登录</el-button>
 		</div>
   </div>
 </template>
@@ -24,14 +24,20 @@ export default {
       password: ''
     }
   },
+  /* mounted () {
+    const ctrl = document.getElementById('loginviewfocus')
+    ctrl.focus()
+  }, */
   methods: {
     login () {
       const acct = this.acct.trim()
       const password = this.password.trim()
       if (acct === '') {
+        this.$message('请输入帐号')
         return
       }
       if (password === '') {
+        this.$message('请输入密码')
         return
       }
       const url = utils.makeUrl(this.HOST + '/users/login', {

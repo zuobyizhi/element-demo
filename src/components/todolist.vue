@@ -10,7 +10,7 @@
       class="right-space">
       </el-date-picker>
 			内容：
-			<el-input style="width: 200px; margin: 0 12px 0 4px" class="inp" v-model="msg"/>
+			<el-input style="width: 200px; margin: 0 12px 0 4px" v-focus class="inp" v-model="msg" @keyup.enter.native="getList"/>
       <el-button type="primary" icon="search"  @click="getList">搜索</el-button>
 		</div>
 		<div class="common-row" style="color: red;" v-if="errMsg !== ''">

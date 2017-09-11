@@ -28,6 +28,12 @@
   border-style: solid;
 	margin: 0px 8px;
 }
+.common-select:focus {
+  border-color: #20a0ff;
+}
+.common-select:hover {
+  border-color: #8391a5;
+}
 
 input {
 	margin: 8px;

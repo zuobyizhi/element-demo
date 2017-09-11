@@ -2,7 +2,7 @@
   <div class="hello">
 		<div class="btns">
       <label>类型：</label>
-      <select v-model="type" class="common-select">
+      <select v-focus v-model="type" class="common-select">
         <option value="0">请选择...</option>
         <option value="1">普通</option>
         <option value="2">重要</option>
@@ -10,7 +10,7 @@
 		</div>
 		<div class="btns">
 			<label>内容：</label>
-			<el-input style="width: 200px;" v-model="content"/>
+			<el-input @keyup.enter.native="onEnter" style="width: 200px;" v-model="content"/>
 		</div>
 		<div class="btns">
 			<el-button type="primary" icon="plus" @click="addTimer" v-if="!isUpdatePage()">添加</el-button>
@@ -35,6 +35,13 @@ export default {
     }
   },
   methods: {
+    onEnter () {
+      if (this.isUpdatePage()) {
+        this.updateItem()
+      } else {
+        this.addTimer()
+      }
+    },
     updateItem () {
       if (Number(this.type) === 0) {
         this.errMsg = '请选择程度'

@@ -2,18 +2,18 @@
   <div class="hello">
 		<div class="btns">
       <label>帐号：</label>
-      <el-input class="inp" v-model="acct"/>
+      <el-input v-focus id="firstInput" class="inp" v-model="acct" @keyup.enter.native="register"/>
 		</div>
 		<div class="btns">
 			<label>密码：</label>
-			<el-input class="inp" v-model="password"/>
+			<el-input class="inp" v-model="password" @keyup.enter.native="register"/>
 		</div>
 		<div class="btns">
 			<label>确认密码：</label>
-			<el-input class="inp" v-model="pwAagin"/>
+			<el-input class="inp" v-model="pwAagin" @keyup.enter.native="register"/>
 		</div>
 		<div class="btns">
-			<el-button type="primary" @click="register">注册</el-button>
+			<el-button type="primary" @click="register" @keyup.enter.native="register">注册</el-button>
 		</div>
   </div>
 </template>
@@ -35,12 +35,15 @@ export default {
       const password = this.password.trim()
       const pwAagin = this.pwAagin.trim()
       if (acct === '') {
+        this.$message('请输入帐号')
         return
       }
       if (password === '') {
+        this.$message('请输入密码')
         return
       }
       if (password !== pwAagin) {
+        this.$message('请确认密码')
         return
       }
       const url = utils.makeUrl(this.HOST + '/users/register', {

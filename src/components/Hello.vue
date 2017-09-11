@@ -18,6 +18,7 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <div v-drag :style="{width:'100px', height:'100px', background:'aqua', position:'absolute', right:0, top:100, color:'#fff'}"><label style="line-height: 100px">dragable</label></div>
   </div>
 </template>
 
