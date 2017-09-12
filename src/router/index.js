@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import FontReference from '@/components/fontreference'
 import Tomato from '@/components/tomato'
 import TodoList from '@/components/todolist'
+import ElTodoList from '@/components/eltodolist'
 import Register from '@/components/register'
 import Login from '@/components/login'
 // import TodoListAdd from '@/components/todolistadd'
@@ -27,6 +28,11 @@ export default new Router({
       path: '/todolist',
       name: 'todolist',
       component: TodoList
+    },
+    {
+      path: '/eltodolist',
+      name: 'eltodolist',
+      component: ElTodoList
     },
     {
       path: '/todolistupdate',
