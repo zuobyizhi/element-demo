@@ -1,15 +1,28 @@
 <template>
-  <div class="hello">
-		<div class="common-row">
-      <div v-for="(item, index) in timer">
-        <list-item :itemId="item.id" :content="item.content" :time="getDate(item.createtime)"
-        :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></list-item>
+  <div class="mediacy">
+    <el-row>
+      <el-col :span="18">
+      <div>
+        <div class="common-row">
+          <div v-for="(item, index) in timer">
+            <list-item :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
+            :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></list-item>
+          </div>
+        </div>
+        <div class="common-row">
+          <el-pagination :total="total" :current-page='current' :page-size='display' @current-change="pagechange"></el-pagination>
+        </div>
       </div>
-		</div>
-    <div class="common-row">
-      <el-pagination :total="total" :current-page='current' :page-size='display' @current-change="pagechange"></el-pagination>
-    </div>
-    <div class="side-nav"></div>
+      </el-col>
+      <el-col :span="6">
+      <el-menu style="margin-top: 18px;" default-active="1" class="el-menu-vertical-demo"
+      theme="white">
+      <el-menu-item index="1" @click="showType=0">全部</el-menu-item>
+      <el-menu-item index="2" @click="showType=1">普通</el-menu-item>
+      <el-menu-item index="3" @click="showType=2">重要</el-menu-item>
+      </el-menu>
+      </el-col>
+    </el-row>
     <el-dialog
     title="删除"
     :visible.sync="dialogVisible"
@@ -39,7 +52,7 @@ export default {
       dialogVisible: false,
       deleteId: 0,
       total: 0,     // 记录总条数
-      display: 5,   // 每页显示条数
+      display: 10,   // 每页显示条数
       current: 1   // 当前的页数
     }
   },
@@ -157,13 +170,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.mediacy {
+  margin: auto;
+  width: 800px;
+}
 .side-nav {
-  width: 25%;
+  width: 100%;
   box-sizing: border-box;
   padding-right: 30px;
 }
 .right-space {
   margin-right: 20px;
+}
+.el-menu-vertical-demo {
+  display: inline-block;
+  text-align: left;
 }
 
 h1, h2 {
@@ -171,6 +192,10 @@ h1, h2 {
 }
 
 ul {
+  width: 80%;
+  margin: 5px;
+}
+/*ul {
   list-style-type: none;
   padding: 0;
 }
@@ -178,7 +203,7 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
+}*/
 
 a {
   color: #42b983;

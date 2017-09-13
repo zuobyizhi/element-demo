@@ -82,6 +82,7 @@ export default {
   top: 0;
   left: 0;
 	width: 100%;
+  min-width: 600px;
 	height: 50px;
 	// background-color: #42b983;
 	background-color: #20a0ff;

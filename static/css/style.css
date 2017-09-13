@@ -17,6 +17,11 @@
   margin-right: auto;
   text-align: left;
 }
+/* 图片自适应 */
+.img-self-adaptation {
+  width: 100%;
+  height: 100%;
+}
 .common-select {
   height: 36px;
   border-radius: 4px;
