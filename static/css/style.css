@@ -22,6 +22,26 @@
   width: 100%;
   height: 100%;
 }
+/* 常用字体大小设置 */
+.title-font-size {
+  font-size: 18px;
+}
+.content-font-size {
+  font-size: 14px;
+}
+.tip-font-size {
+  font-size: 12px;
+}
+/* 隔线 */
+.line-divider {
+    display: block;
+    height: 9px;
+    width: 1px;
+    background-color: #999;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-bottom: 1px;
+}
 .common-select {
   height: 36px;
   border-radius: 4px;

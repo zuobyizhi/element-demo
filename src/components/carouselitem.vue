@@ -1,17 +1,8 @@
 <template>
-  <div class="item-white-block item">
+  <div class="item" @click="updateItem">
     <div class="head-pic-div"><img class="img-self-adaptation" src="http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg"></img></div>
-    <div class="msg-div">
-      <h3 class="item-title">{{content}}</h3>
-      <div class="item-content">{{content}}</div>
-      <div class="item-bottom">
-        <ul>
-          <div class="float-left">{{time}}</div>
-          <div class="float-left">{{type}}</div>
-          <div class="float-left"><button class="btn" @click="updateItem">修改</button></div>
-          <div class="float-left"><button class="btn" @click="deleteItem">删除</button></div>
-        </ul>
-      </div>
+    <div class="font-color-white item-bottom text-shadow title-font-size">
+      <span class="item-bottom">{{content}}</span>
     </div>
   </div>
 </template>
@@ -44,16 +35,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.font-color-white {
+  color: #fff;
+}
 .item-title {
-  text-align: left;
   margin-bottom: 10px;
   font-weight: 700;
   font-size: 18px;
 }
 .head-pic-div {
   float: left;
-  height: 120px;
-  width: 120px;
+  height: 100%;
+  width: 100%;
 }
 .btn {
   color: #20a0ff;
@@ -79,8 +72,9 @@ export default {
 }
 .item {
   width: 100%;
-  min-height: 120px;
+  height: 100%;
   position: relative;
+  text-align: center;
 }
 .msg-div {
   float: left;
@@ -95,9 +89,13 @@ export default {
   bottom: 0;
   left: 0;
   display: block;
-  margin-bottom: 5px;
-  font-size: 12px;
-  color: #999;
+  padding-bottom: 10px;
+  width: 100%;
+}
+.text-shadow {
+  width: 100%;
+  height: 50%;
+  background-image: linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,.75) 40%,transparent);
 }
 .float-left {
   float: left;

@@ -1,5 +1,13 @@
 <template>
   <div class="mediacy">
+    <div style="margin: 18px;">
+      <el-carousel indicator-position="outside"  type="card">
+      <el-carousel-item v-for="item in timer.slice(0, 4)" :key="item">
+      <carousel-item :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
+      :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></carousel-item>
+      </el-carousel-item>
+      </el-carousel>
+    </div>
     <el-row>
       <el-col :span="18">
       <div>
@@ -148,7 +156,8 @@ export default {
     }
   },
   components: {
-    'list-item': require('./eltodolistitem.vue')
+    'list-item': require('./eltodolistitem.vue'),
+    'carousel-item': require('./carouselitem.vue')
   },
   mounted () {
     const ret = this.chkLogin(() => {
@@ -207,5 +216,20 @@ li {
 
 a {
   color: #42b983;
+}
+
+/* 走马灯CSS */
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 18px;
+  opacity: 0.75;
+  line-height: 300px;
+  margin: 0;
+}
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+.el-carousel__item:nth-child(2n+1) {
+  background-color: #d3dce6;
 }
 </style>
