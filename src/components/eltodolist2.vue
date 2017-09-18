@@ -2,7 +2,7 @@
   <div id="mediacy" class="mediacy">
     <div style="margin: 18px;">
       <el-carousel indicator-position="outside"  type="card">
-      <el-carousel-item v-for="item in timer.slice(0, 4)" :key="item">
+      <el-carousel-item v-for="item in timer.slice(0, 4)" :key="item.id">
       <carousel-item :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
       :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></carousel-item>
       </el-carousel-item>
