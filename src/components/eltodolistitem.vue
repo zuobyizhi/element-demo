@@ -1,8 +1,6 @@
 <template>
-  <div class="item-white-block item">
-    <lazy-component>
-    <div class="head-pic-div"><img class="img-self-adaptation" v-lazy="img"></img></div>
-    </lazy-component>
+  <div class="item-white-block item" style="overflow: hidden;">
+    <div class="head-pic-div" style="overflow: hidden;"><img class="img-self-adaptation img-scale" v-lazy="img"></img></div>
     <div class="msg-div">
       <h3 class="item-title">{{content}}</h3>
       <div class="item-content">{{content}}</div>
@@ -105,14 +103,6 @@ export default {
 .float-left {
   float: left;
   margin-left: 10px;
-}
-
-img {
-  overflow: hidden;
-}
-img:hover {
-  transform: scale(1.05);
-  transition: transform .15s ease-in,-webkit-transform .15s ease-in;
 }
 
 h1, h2, h3 {

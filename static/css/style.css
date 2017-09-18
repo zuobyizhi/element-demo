@@ -42,6 +42,18 @@
     margin-right: 6px;
     margin-bottom: 1px;
 }
+/* 图片hover时变大 */
+.img-scale {
+  overflow: hidden;
+}
+.img-scale:hover {
+  transform: scale(1.05);
+  transition: transform .15s ease-in,-webkit-transform .15s ease-in;
+}
+.pointerevents-none {
+  pointer-events: none;
+}
+/* 通用select控件样式 */
 .common-select {
   height: 36px;
   border-radius: 4px;
