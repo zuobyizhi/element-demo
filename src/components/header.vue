@@ -16,6 +16,9 @@
       <li :class="{active: cmpPath('/eltodolist')}">
         <router-link to="eltodolist">备忘2</router-link>
       </li>
+      <li :class="{active: cmpPath('/eltodolist2')}">
+        <router-link to="eltodolist2">备忘3</router-link>
+      </li>
     </ul>
     <ul style="position: absolute; right: 20px">
       <li :class="{active: cmpPath('/register')}" v-if="!bLogin">

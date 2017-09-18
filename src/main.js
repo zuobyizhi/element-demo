@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 // import store from './store/'
 import Layer from 'vue-layer'
+import VueLazyload from 'vue-lazyload'
 import VueResource from 'vue-resource'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
@@ -51,6 +52,15 @@ Vue.directive('drag', function (el) {
       document.onmouseup = null
     }
   }
+})
+
+Vue.use(VueLazyload, {
+  // error: 'static/error.png',//这个是请求失败后显示的图片
+  // loading: '../static/img/loading.pdf', // 这个是加载的loading过渡效果
+  loading: '../static/img/loading.jpg', // 这个是加载的loading过渡效果
+  preLoad: 1.3,
+  attempt: 1,
+  try: 2 // 这个是加载图片数量
 })
 
 /* eslint-disable no-new */

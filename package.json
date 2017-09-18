@@ -21,6 +21,7 @@
     "less": "*",
     "element-ui": "*",
     "less-loader": "*",
+    "vue-lazyload": "*",
     "vuex": "^2.0.0"
   },
   "devDependencies": {

@@ -231,6 +231,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello {
+  min-width: 600px;
+  max-width: 1200px;
+  margin: auto;
+}
 .common-input {
   width: 200px;
   margin: 0 12px 0 4px;

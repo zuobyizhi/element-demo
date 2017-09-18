@@ -123,6 +123,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello {
+  min-width: 600px;
+  max-width: 1200px;
+  margin: auto;
+}
 .inp{
 	margin: 8px;
 }

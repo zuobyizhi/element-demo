@@ -1,6 +1,8 @@
 <template>
   <div class="item-white-block item">
-    <div class="head-pic-div"><img class="img-self-adaptation" src="http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg"></img></div>
+    <lazy-component>
+    <div class="head-pic-div"><img class="img-self-adaptation" v-lazy="img"></img></div>
+    </lazy-component>
     <div class="msg-div">
       <h3 class="item-title">{{content}}</h3>
       <div class="item-content">{{content}}</div>
@@ -21,7 +23,8 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: ''
+      msg: '',
+      img: 'http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg'
     }
   },
   props: {
