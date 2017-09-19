@@ -1,5 +1,5 @@
 <template>
-  <div class="item" @click="work" id="gototopbtn">
+  <div class="item" id="gototopbtn">
     <!-- img class="img-self-adaptation item" src="http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg"></img >
     <div class="toTop">  
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class = "toTopSvg"  viewbox="0 0 24 24">  
@@ -11,7 +11,7 @@
         C36.314,21.143,34.272,23.184,31.726,23.155z" class="tt"/>  
       </svg>  
     </div-->
-    <el-button icon="arrow-up"></el-button>
+    <el-button icon="arrow-up" class="pointerevents-none" size="small"></el-button>
   </div>
 </template>
 
@@ -78,6 +78,9 @@ export default {
   width: 36px;
   height: 36px;
   border-radius: 4px;
+}
+.item:hover {
+  cursor: pointer;
 }
 .toTop{  
   width: 36px;  

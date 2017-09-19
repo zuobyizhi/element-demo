@@ -20,13 +20,10 @@
         <el-button v-if="timer.length !== total" @click="getMore">加载更多...</el-button>
         <div v-if="timer.length === total">已无更多...</div>
         <div style="height: 50px;"></div>
-        <!-- div class="common-row">
-          <el-pagination :total="total" :current-page='current' :page-size='display' @current-change="pagechange"></el-pagination>
-        </div -->
       </div>
       </el-col>
       <el-col :span="6">
-      <el-menu style="margin-top: 18px;" default-active="1" class="el-menu-vertical-demo"
+      <el-menu style="margin-top: 18px;" default-active="(Number($route.query.type || 0) + 1)" class="el-menu-vertical-demo"
       theme="white">
       <el-menu-item index="1" @click="showType=0">全部</el-menu-item>
       <el-menu-item index="2" @click="showType=1">普通</el-menu-item>
@@ -203,6 +200,9 @@ export default {
       const currentPage = this.current
       this.showType = Number(query.type || 0)
       this.msg = (query.content || '')
+
+      const div = document.getElementsByClassName("el-menu-vertical-demo")[0]
+      div['default-active'] = this.showType + 1
 
       this.getList()
     }, () => {

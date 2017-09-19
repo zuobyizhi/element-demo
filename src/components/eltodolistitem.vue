@@ -1,6 +1,6 @@
 <template>
   <div class="item-white-block item" style="overflow: hidden;">
-    <div class="head-pic-div" style="overflow: hidden;"><img class="img-self-adaptation img-scale" v-lazy="img"></img></div>
+    <div class="head-pic-div img-scale"><img class="img-self-adaptation" v-lazy="img"></img></div>
     <div class="msg-div">
       <h3 class="item-title">{{content}}</h3>
       <div class="item-content">{{content}}</div>

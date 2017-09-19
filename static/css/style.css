@@ -46,10 +46,11 @@
 .img-scale {
   overflow: hidden;
 }
-.img-scale:hover {
+.img-scale > img:hover {
   transform: scale(1.05);
   transition: transform .15s ease-in,-webkit-transform .15s ease-in;
 }
+/* 不吸收鼠标事件 */
 .pointerevents-none {
   pointer-events: none;
 }

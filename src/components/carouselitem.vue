@@ -1,7 +1,9 @@
 <template>
   <div class="item" @click="updateItem">
     <!-- div class="head-pic-div"><img class="img-self-adaptation img-scale" src="http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg"></img></div -->
-    <img class="img-self-adaptation img-scale head-pic-div" src="http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg"></img>
+    <div class="img-scale head-pic-div">
+      <img class="img-self-adaptation" src="http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg"></img>
+    </div>
     <div class="font-color-white item-bottom text-shadow title-font-size pointerevents-none">
       <span class="item-bottom">{{content}}</span>
     </div>

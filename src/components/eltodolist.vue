@@ -31,6 +31,7 @@
       </el-menu>
       </el-col>
     </el-row>
+    <go-to-top class="gototop"></go-to-top>
     <el-dialog
     title="删除"
     :visible.sync="dialogVisible"
@@ -157,6 +158,7 @@ export default {
   },
   components: {
     'list-item': require('./eltodolistitem.vue'),
+    'go-to-top': require('./gototop.vue'),
     'carousel-item': require('./carouselitem.vue')
   },
   mounted () {
@@ -179,6 +181,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.gototop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
 .mediacy {
   margin: auto;
   width: 800px;
