@@ -23,7 +23,7 @@
       </div>
       </el-col>
       <el-col :span="6">
-      <el-menu style="margin-top: 18px;" default-active="(Number($route.query.type || 0) + 1)" class="el-menu-vertical-demo"
+      <el-menu style="margin-top: 18px;" :default-active="String(Number($route.query.type || 0) + 1)" class="el-menu-vertical-demo"
       theme="white">
       <el-menu-item index="1" @click="showType=0">全部</el-menu-item>
       <el-menu-item index="2" @click="showType=1">普通</el-menu-item>
@@ -200,9 +200,6 @@ export default {
       const currentPage = this.current
       this.showType = Number(query.type || 0)
       this.msg = (query.content || '')
-
-      const div = document.getElementsByClassName("el-menu-vertical-demo")[0]
-      div['default-active'] = this.showType + 1
 
       this.getList()
     }, () => {
