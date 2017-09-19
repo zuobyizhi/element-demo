@@ -34,13 +34,13 @@
 }
 /* 隔线 */
 .line-divider {
-    display: block;
-    height: 9px;
-    width: 1px;
-    background-color: #999;
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-bottom: 1px;
+  display: block;
+  height: 9px;
+  width: 1px;
+  background-color: #999;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 1px;
 }
 /* 图片hover时变大 */
 .img-scale {
@@ -53,6 +53,10 @@
 /* 不吸收鼠标事件 */
 .pointerevents-none {
   pointer-events: none;
+}
+/* 通用灰色细边框 */
+.gray-thin-border {
+  border: 1px solid #ebebeb;
 }
 /* 通用select控件样式 */
 .common-select {

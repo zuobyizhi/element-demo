@@ -1,5 +1,5 @@
 <template>
-  <div class="item-white-block item" style="overflow: hidden;">
+  <div class="item-white-block item gray-thin-border">
     <div class="head-pic-div img-scale"><img class="img-self-adaptation" v-lazy="img"></img></div>
     <div class="msg-div">
       <h3 class="item-title">{{content}}</h3>

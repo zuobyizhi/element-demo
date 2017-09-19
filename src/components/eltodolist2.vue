@@ -23,7 +23,7 @@
       </div>
       </el-col>
       <el-col :span="6">
-      <el-menu style="margin-top: 18px;" :default-active="String(Number($route.query.type || 0) + 1)" class="el-menu-vertical-demo"
+      <el-menu style="margin-top: 18px;" :default-active="String(Number($route.query.type || 0) + 1)" class="el-menu-vertical-demo gray-thin-border"
       theme="white">
       <el-menu-item index="1" @click="showType=0">全部</el-menu-item>
       <el-menu-item index="2" @click="showType=1">普通</el-menu-item>
@@ -233,6 +233,7 @@ export default {
 .el-menu-vertical-demo {
   display: inline-block;
   text-align: left;
+  background-color: #fff;
 }
 
 h1, h2 {
