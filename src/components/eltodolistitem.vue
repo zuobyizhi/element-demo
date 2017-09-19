@@ -2,8 +2,8 @@
   <div class="item-white-block item gray-thin-border">
     <div class="head-pic-div img-scale"><img class="img-self-adaptation" v-lazy="img"></img></div>
     <div class="msg-div">
-      <h3 class="item-title">{{content}}</h3>
-      <div class="item-content">{{content}}</div>
+      <h3 class="item-title">{{shorten(content, 16, '...')}}</h3>
+      <div class="item-content line-feed">{{shorten(content, 100, '...')}}</div>
       <div class="item-bottom">
         <ul>
           <div class="float-left">{{time}}</div>
@@ -35,6 +35,14 @@ export default {
   methods: {
     updateItem () {
       this.$emit('updateItem', this.itemId)
+    },
+    shorten (text, num, tail = '') {
+      const tx = String(text)
+      if (tx.length <= num) {
+        return tx
+      } else {
+        return tx.substring(0, num) + tail
+      }
     },
     deleteItem () {
       this.$emit('deleteItem', this.itemId)

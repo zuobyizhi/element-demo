@@ -58,6 +58,12 @@
 .gray-thin-border {
   border: 1px solid #ebebeb;
 }
+/* div里面的文字换行设置 */
+.line-feed {
+  white-space: normal;
+  word-break: break-all;
+  word-wrap: break-word;
+}
 /* 通用select控件样式 */
 .common-select {
   height: 36px;
