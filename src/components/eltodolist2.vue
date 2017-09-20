@@ -17,7 +17,7 @@
             :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></list-item>
           </div>
         </div>
-        <el-button v-if="timer.length !== total" @click="getMore">加载更多...</el-button>
+        <el-button v-if="timer.length !== total" @click="getMore" icon="arrow-down">加载更多...</el-button>
         <div v-if="timer.length === total">已无更多...</div>
         <div style="height: 50px;"></div>
       </div>

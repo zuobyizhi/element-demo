@@ -35,7 +35,7 @@
         <tbody>
           <tr v-for="(item, index) in timer">
             <td>{{getTypeName(item.type || 0)}}</td>
-            <td>{{item.content}}</td>
+            <td>{{shorten(item.content, 25, '...')}}</td>
             <td>{{getDate(item.createtime)}}</td>
             <td>
               <el-button type="primary" icon="edit" @click="updateItem(item)">修改</el-button>
@@ -113,6 +113,9 @@ export default {
     },
     goToAdd () {
       this.$router.push({path: '/todolistadd'})
+    },
+    shorten (str, len, tail) {
+      return utils.shorten(str, len, tail)
     },
     updateItem (item) {
       this.$router.push({path: '/todolistupdate',

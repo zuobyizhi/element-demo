@@ -6,6 +6,8 @@
       <div class="item-content line-feed">{{shorten(content, 100, '...')}}</div>
       <div class="item-bottom">
         <ul>
+          <div class="float-left"><i class="el-icon-time"></i></div>
+          <!-- i class="el-icon-time float-left"></i -->
           <div class="float-left">{{time}}</div>
           <div class="float-left">{{type}}</div>
           <div class="float-left"><button class="btn" @click="updateItem">修改</button></div>
@@ -17,6 +19,7 @@
 </template>
 
 <script>
+const utils = require('../utils/utils.js')
 export default {
   name: 'hello',
   data () {
@@ -37,12 +40,7 @@ export default {
       this.$emit('updateItem', this.itemId)
     },
     shorten (text, num, tail = '') {
-      const tx = String(text)
-      if (tx.length <= num) {
-        return tx
-      } else {
-        return tx.substring(0, num) + tail
-      }
+      return utils.shorten(text, num, tail)
     },
     deleteItem () {
       this.$emit('deleteItem', this.itemId)
@@ -58,11 +56,12 @@ export default {
   margin-bottom: 10px;
   font-weight: 700;
   font-size: 18px;
+  line-height: 27px;
 }
 .head-pic-div {
   float: left;
-  height: 120px;
-  width: 120px;
+  height: 158px;
+  width: 160px;
 }
 .btn {
   color: #20a0ff;
@@ -84,27 +83,27 @@ export default {
   left: 0;
   color: #666;
   font-size: 14px;
+  line-height: 23px;
   text-align: left;
 }
 .item {
   width: 100%;
-  min-height: 120px;
+  min-height: 160px;
   position: relative;
 }
 .msg-div {
   float: left;
   display: block;
-  width: 440px;
-  height: 120px;
+  width: 360px;
+  height: 160px;
   position: relative;
   padding: 12px 16px;
 }
 .item-bottom {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 12px;
+  left: 12px;
   display: block;
-  margin-bottom: 5px;
   font-size: 12px;
   color: #999;
 }

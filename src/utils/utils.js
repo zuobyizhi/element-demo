@@ -5,6 +5,7 @@ module.exports.replaceAll = replaceAll
 module.exports.numAdjust = numAdjust
 module.exports.repeat = repeat
 module.exports.midNum = midNum
+module.exports.shorten = shorten
 
 module.exports.oneDay = 24 * 60 * 60 * 1000
 
@@ -135,6 +136,22 @@ function numAdjust (str, len) {
     return repeat('0', len - l) + str
   } else if (l > len) {
     return str.substr(l - len)
+  }
+}
+
+/**
+ * str超过长度则缩短
+ * @param {stirng} str
+ * @param {number} len
+ * @param {stirng} tail
+ * @return {string}
+ */
+function shorten (str, len, tail = '') {
+  const tx = String(str)
+  if (tx.length <= len) {
+    return tx
+  } else {
+    return tx.substring(0, len) + tail
   }
 }
 
