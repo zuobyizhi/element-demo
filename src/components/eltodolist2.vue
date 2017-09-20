@@ -31,7 +31,7 @@
       </el-menu>
       </el-col>
     </el-row>
-    <go-to-top @work="goToTop" class="gototop"></go-to-top>
+    <go-to-top class="gototop"></go-to-top>
     <el-dialog
     title="删除"
     :visible.sync="dialogVisible"
@@ -46,7 +46,7 @@
 </template>
 
 <script type="es6">
-const utils = require('../utils/utils.js')
+import * as utils from '../utils/utils.js'
 const TYPE = [{desc: "普通", value: 1}, {desc: "重要", value: 2}]
 export default {
   name: 'hello',
@@ -168,15 +168,6 @@ export default {
       }
       return "普通"
     },
-    goToTop () {
-      // document.documentElement.scrollTop = 0;
-      // document.body.scrollTop = 0;	
-      console.log("gototop")
-      // const div = document.getElementByClassName("mediacy")[0]
-      // const div = this.$refs.mediacy[0]
-      const div = document.getElementById("app")
-      div.scrollIntoView(true)
-    },
     getDate(shijianchuo) {
       //shijianchuo是整数，否则要parseInt转换
       return utils.stampFormat(shijianchuo, "yyyy-MM-dd hh:mm:ss")
@@ -213,63 +204,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.gototop {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-}
 .mediacy {
   margin: auto;
   width: 800px;
 }
-.side-nav {
-  width: 100%;
-  box-sizing: border-box;
-  padding-right: 30px;
-}
-.right-space {
-  margin-right: 20px;
-}
 .el-menu-vertical-demo {
-  display: inline-block;
-  text-align: left;
   background-color: #fff;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  width: 80%;
-  margin: 5px;
-}
-/*ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}*/
-
-a {
-  color: #42b983;
-}
-
-/* 走马灯CSS */
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 18px;
-  opacity: 0.75;
-  line-height: 300px;
-  margin: 0;
-}
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-.el-carousel__item:nth-child(2n+1) {
-  background-color: #d3dce6;
 }
 </style>

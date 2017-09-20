@@ -128,30 +128,9 @@ export default {
   max-width: 1200px;
   margin: auto;
 }
-.inp{
-	margin: 8px;
-}
 
 label {
   width: 100px;
   display:inline-block;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 </style>

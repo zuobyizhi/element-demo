@@ -19,7 +19,7 @@
 </template>
 
 <script>
-const utils = require('../utils/utils.js')
+import * as utils from '../utils/utils.js'
 export default {
   name: 'hello',
   data () {
@@ -94,7 +94,7 @@ export default {
 .msg-div {
   float: left;
   display: block;
-  width: 360px;
+  width: 400px;
   height: 160px;
   position: relative;
   padding: 12px 16px;
@@ -110,10 +110,6 @@ export default {
 .float-left {
   float: left;
   margin-left: 10px;
-}
-
-h1, h2, h3 {
-  font-weight: normal;
 }
 
 ul {

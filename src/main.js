@@ -9,7 +9,7 @@ import VueLazyload from 'vue-lazyload'
 import VueResource from 'vue-resource'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
-import Utils from './utils/utils'
+import * as Utils from './utils/utils.js'
 
 Vue.use(Element)
 
