@@ -38,6 +38,9 @@
 .align-center {
   text-align: center;
 }
+.align-left {
+  text-align: left;
+}
 /* 大小和父控件一样 */
 .fill-parent {
   width: 100%;
@@ -53,10 +56,10 @@
   color: #fff;
 }
 .font-color-dark-gray {
-  color: #999;
+  color: #666;
 }
 .font-color-light-gray {
-  color: #666;
+  color: #999;
 }
 .float-left {
   float: left;
@@ -151,6 +154,13 @@
 }
 .common-select:hover {
   border-color: #8391a5;
+}
+/* 像<a>一样的按钮 */
+.a-btn {
+  color: #20a0ff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 /* 走马灯CSS，elementUI走马灯控件专用 */
 .el-carousel__item h3 {
