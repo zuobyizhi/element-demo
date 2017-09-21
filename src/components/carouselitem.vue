@@ -31,9 +31,6 @@ export default {
     },
     shorten (str, len, tail) {
       return utils.shorten(str, len, tail)
-    },
-    deleteItem () {
-      this.$emit('deleteItem', this.itemId)
     }
   }
 }

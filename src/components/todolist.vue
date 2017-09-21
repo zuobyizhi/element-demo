@@ -62,7 +62,7 @@
 </template>
 
 <script type="es6">
-const utils = require('../utils/utils.js')
+import * as utils from '../utils/utils.js'
 const TYPE = [{desc: "普通", value: 1}, {desc: "重要", value: 2}]
 export default {
   name: 'hello',

@@ -8,10 +8,11 @@
 </template>
 
 <script>
+import appHeader from './components/header.vue'
 export default {
   name: 'app',
   components: {
-    'app-header': require('./components/header.vue')
+    appHeader
   }
 }
 </script>

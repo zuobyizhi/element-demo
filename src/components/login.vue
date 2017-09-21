@@ -15,7 +15,7 @@
 </template>
 
 <script>
-const utils = require('../utils/utils.js')
+import * as utils from '../utils/utils.js'
 export default {
   name: 'hello',
   data () {

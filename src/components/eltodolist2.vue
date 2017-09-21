@@ -47,6 +47,9 @@
 
 <script type="es6">
 import * as utils from '../utils/utils.js'
+import listItem from './eltodolistitem.vue'
+import goToTop from './gototop.vue'
+import carouselItem from './carouselitem.vue'
 const TYPE = [{desc: "普通", value: 1}, {desc: "重要", value: 2}]
 export default {
   name: 'hello',
@@ -171,7 +174,6 @@ export default {
     getDate(shijianchuo) {
       //shijianchuo是整数，否则要parseInt转换
       return utils.stampFormat(shijianchuo, "yyyy-MM-dd hh:mm:ss")
-      // return utils.stampFormat(shijianchuo, "yyyyyy-MMMM-dddd hhhh:mmmm:ssss mm")
     }
   },
   watch: {
@@ -180,9 +182,9 @@ export default {
     }
   },
   components: {
-    'list-item': require('./eltodolistitem.vue'),
-    'go-to-top': require('./gototop.vue'),
-    'carousel-item': require('./carouselitem.vue')
+    listItem,
+    goToTop,
+    carouselItem
   },
   mounted () {
     const ret = this.chkLogin(() => {
