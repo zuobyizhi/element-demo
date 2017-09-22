@@ -42,13 +42,11 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
-  display: block;
   padding-bottom: 10px;
   width: 100%;
 }
 .text-shadow {
   width: 100%;
   height: 50%;
-  background-image: linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,.75) 40%,transparent);
 }
 </style>

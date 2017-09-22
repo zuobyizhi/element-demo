@@ -1,14 +1,3 @@
-/* module.exports.makeUrl = makeUrl
-module.exports.uuid = uuid
-module.exports.stampFormat = stampFormat
-module.exports.replaceAll = replaceAll
-module.exports.numAdjust = numAdjust
-module.exports.repeat = repeat
-module.exports.midNum = midNum
-module.exports.shorten = shorten
-
-module.exports.oneDay = 24 * 60 * 60 * 1000 */
-
 export const oneDay = 24 * 60 * 60 * 1000
 
 /**

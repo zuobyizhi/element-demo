@@ -137,6 +137,13 @@
   -webkit-animation: rotation 20s linear infinite;
   -o-animation: rotation 20s linear infinite;
 }
+/* hover时旋转 */
+.hover-rotate {
+-webkit-transition: -webkit-transform 1s;
+}
+.hover-rotate:hover {
+-webkit-transform: rotate(90deg);
+}
 /* 通用select控件样式 */
 .common-select {
   height: 36px;
@@ -161,6 +168,10 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+/* 文字半透明背景 */
+.text-shadow {
+  background-image: linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,.75) 40%,transparent);
 }
 /* 走马灯CSS，elementUI走马灯控件专用 */
 .el-carousel__item h3 {

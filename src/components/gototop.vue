@@ -14,18 +14,18 @@ export default {
   },
   mounted () {
     const obtn = document.getElementById('gototopbtn')  // 获取回到顶部按钮的ID
-    const clientHeight = document.documentElement.clientHeight   // 获取可视区域的高度
     let timer = null // 定义一个定时器
     let isTop = true // 定义一个布尔值，用于判断是否到达顶部
+    obtn.style.display = 'none'
 
     window.onscroll = function () {         // 滚动条滚动事件
       // 获取滚动条的滚动高度
       const osTop = document.documentElement.scrollTop || document.body.scrollTop
 
-      if (osTop >= clientHeight) {  // 如果滚动高度大于可视区域高度，则显示回到顶部按钮
+      if (osTop > 0) {  // 如果滚动高度大于可视区域高度，则显示回到顶部按钮
         obtn.style.display = 'block'
       } else {         // 否则隐藏
-        // obtn.style.display = 'none'
+        obtn.style.display = 'none'
       }
 
       // 主要用于判断当 点击回到顶部按钮后 滚动条在回滚过程中，若手动滚动滚动条，则清除定时器
