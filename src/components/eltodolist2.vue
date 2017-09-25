@@ -213,7 +213,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .mediacy {
-  margin: auto;
   width: 800px;
 }
 .el-menu-vertical-demo {
@@ -221,6 +220,7 @@ export default {
 }
 .img-card {
   width: 90%;
-  height: 250px;
+  min-height: 250px;
+  height: auto;
 }
 </style>

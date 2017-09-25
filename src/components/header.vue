@@ -89,7 +89,7 @@ export default {
 	height: 50px;
 	// background-color: #42b983;
 	background-color: #20a0ff;
-  box-shadow: 2px 2px 1px #ccc;
+  // box-shadow: 2px 2px 1px #ccc;
   z-index: 1000;
   opacity: 0.9;
 }

@@ -14,7 +14,7 @@
         <div class="common-row">
           <div v-for="(item, index) in timer">
             <list-item :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
-            :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></list-item>
+            :type="getTypeName(item.type)" :line="true" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></list-item>
           </div>
         </div>
         <div class="common-row">
@@ -29,6 +29,10 @@
       <el-menu-item index="2" @click="showType=1">普通</el-menu-item>
       <el-menu-item index="3" @click="showType=2">重要</el-menu-item>
       </el-menu>
+      <div v-for="(item, index) in timer.slice(0, 3)">
+        <img-card :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
+        :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper" class="img-card"></img-card>
+      </div>
       </el-col>
     </el-row>
     <go-to-top class="gototop"></go-to-top>
@@ -50,6 +54,7 @@ import * as utils from '../utils/utils.js'
 import listItem from './eltodolistitem.vue'
 import goToTop from './gototop.vue'
 import carouselItem from './carouselitem.vue'
+import imgCard from './imgcard.vue'
 const TYPE = [{desc: "普通", value: 1}, {desc: "重要", value: 2}]
 export default {
   name: 'hello',
@@ -161,6 +166,7 @@ export default {
   components: {
     listItem,
     goToTop,
+    imgCard,
     carouselItem
   },
   mounted () {
@@ -184,10 +190,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .mediacy {
-  margin: auto;
   width: 800px;
 }
 .el-menu-vertical-demo {
   background-color: #fff;
+}
+.img-card {
+  width: 90%;
+  height: 250px;
+  // height: auto;
 }
 </style>

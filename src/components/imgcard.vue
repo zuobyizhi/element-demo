@@ -2,7 +2,7 @@
   <div class="item-white-block item gray-thin-border pos-relative overflow-hidden">
     <div class="head-pic-div img-scale float-left"><img class="img-self-adaptation" v-lazy="img"></img></div>
     <div class="msg-div float-left pos-relative">
-      <h3 class="item-title title-font-size align-left">{{shorten(content, 16, '...')}}</h3>
+      <h3 class="item-title title-font-size align-left line-feed">{{shorten(content, 16, '...')}}</h3>
       <div class="item-content line-feed content-font-size font-color-dark-gray align-left">{{shorten(content, 100, '...')}}</div>
     </div>
   </div>

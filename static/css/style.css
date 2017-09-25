@@ -51,6 +51,10 @@
   width: 100%;
   height: 100%;
 }
+/* 高度自适应子空间 */
+.height-adaptation {
+  height: auto;
+}
 /* 字体颜色 */
 .font-color-white {
   color: #fff;
@@ -78,6 +82,10 @@
 }
 .tip-font-size {
   font-size: 12px;
+}
+/* 集中 */
+.mediacy {
+  margin: auto;
 }
 /* 隔线 */
 .line-divider {

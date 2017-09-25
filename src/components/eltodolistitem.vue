@@ -1,6 +1,6 @@
 <template>
-  <div class="item-white-block item gray-thin-border">
-    <div class="head-pic-div img-scale float-left"><img class="img-self-adaptation" v-lazy="img"></img></div>
+  <div v-bind:class="{bottom_line: line, item_white_block: !line, gray_thin_border: !line}" class="item">
+    <div :class="{displaynone: line}" class="head-pic-div img-scale float-left"><img class="img-self-adaptation" v-lazy="img"></img></div>
     <div class="msg-div float-left pos-relative">
       <h3 class="item-title title-font-size align-left">{{shorten(content, 16, '...')}}</h3>
       <div class="item-content line-feed content-font-size font-color-dark-gray align-left">{{shorten(content, 100, '...')}}</div>
@@ -34,6 +34,7 @@ export default {
     title: String,
     time: String,
     type: String,
+    line: Boolean,
     itemId: Number
   },
   methods: {
@@ -52,6 +53,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.bottom_line {
+  border-bottom: 1px solid #d7d7d7;
+  background-color: #fff;
+}
+.displaynone {
+  display: none;
+}
 .item-title {
   margin-bottom: 10px;
   font-weight: 700;
@@ -60,7 +68,7 @@ export default {
   height: 158px;
   width: 160px;
 }
-.item-white-block {
+.item_white_block {
   background-color: #fff;
   margin-bottom: 12px;
 }
