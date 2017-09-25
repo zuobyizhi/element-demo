@@ -1,7 +1,7 @@
 <template>
   <div id="mediacy" class="mediacy">
     <div style="margin: 18px;">
-      <el-carousel indicator-position="outside"  type="card">
+      <el-carousel indicator-position="outside" type="card">
       <el-carousel-item v-for="item in timer.slice(0, 4)" :key="item.id">
       <carousel-item :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
       :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></carousel-item>
@@ -29,6 +29,10 @@
       <el-menu-item index="2" @click="showType=1">普通</el-menu-item>
       <el-menu-item index="3" @click="showType=2">重要</el-menu-item>
       </el-menu>
+      <div v-for="(item, index) in timer.slice(0, 3)">
+        <img-card :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
+        :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper" class="img-card"></img-card>
+      </div>
       </el-col>
     </el-row>
     <go-to-top class="gototop"></go-to-top>
@@ -48,6 +52,7 @@
 <script type="es6">
 import * as utils from '../utils/utils.js'
 import listItem from './eltodolistitem.vue'
+import imgCard from './imgcard.vue'
 import goToTop from './gototop.vue'
 import carouselItem from './carouselitem.vue'
 const TYPE = [{desc: "普通", value: 1}, {desc: "重要", value: 2}]
@@ -183,6 +188,7 @@ export default {
   },
   components: {
     listItem,
+    imgCard,
     goToTop,
     carouselItem
   },
@@ -212,5 +218,9 @@ export default {
 }
 .el-menu-vertical-demo {
   background-color: #fff;
+}
+.img-card {
+  width: 90%;
+  height: 250px;
 }
 </style>

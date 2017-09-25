@@ -1,20 +1,9 @@
 <template>
-  <div class="item-white-block item gray-thin-border">
+  <div class="item-white-block item gray-thin-border pos-relative overflow-hidden">
     <div class="head-pic-div img-scale float-left"><img class="img-self-adaptation" v-lazy="img"></img></div>
     <div class="msg-div float-left pos-relative">
       <h3 class="item-title title-font-size align-left">{{shorten(content, 16, '...')}}</h3>
       <div class="item-content line-feed content-font-size font-color-dark-gray align-left">{{shorten(content, 100, '...')}}</div>
-      <div class="item-bottom tip-font-size font-color-light-gray">
-        <ul class="inline">
-          <div class="float-left margin-left-10px"><i class="el-icon-time"></i></div>
-          <div class="float-left margin-left-5px">{{time}}</div>
-          <div class="float-left margin-left-10px">{{type}}</div>
-        </ul>
-        <ul class="float-right inline">
-          <div class="float-left margin-left-20px"><button class="a-btn" @click="updateItem">修改</button></div>
-          <div class="float-left margin-left-5px"><button class="a-btn" @click="deleteItem">删除</button></div>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
@@ -42,9 +31,6 @@ export default {
     },
     shorten (text, num, tail = '') {
       return utils.shorten(text, num, tail)
-    },
-    deleteItem () {
-      this.$emit('deleteItem', this.itemId)
     }
   }
 }
@@ -57,8 +43,8 @@ export default {
   font-weight: 700;
 }
 .head-pic-div {
-  height: 158px;
-  width: 160px;
+  height: 60%;
+  width: 100%;
 }
 .item-white-block {
   background-color: #fff;
@@ -69,18 +55,19 @@ export default {
   left: 0;
 }
 .item {
-  width: 100%;
-  min-height: 160px;
+  min-width: 20px;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 2px;
 }
 .msg-div {
-  width: 400px;
-  height: 160px;
+  width: 100%;
+  height: 40%;
   padding: 12px 16px;
 }
 .item-bottom {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  width: 90%;
 }
 </style>

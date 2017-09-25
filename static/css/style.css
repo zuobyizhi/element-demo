@@ -89,6 +89,26 @@
   margin-right: 6px;
   margin-bottom: 1px;
 }
+.inline {
+  display: inline;
+}
+/* 位于窗口顶部 */
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+/* 位于父控件顶部 */
+.relative-top {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
 /* 图片hover时变大 */
 .img-scale {
   overflow: hidden;
@@ -139,10 +159,10 @@
 }
 /* hover时旋转 */
 .hover-rotate {
--webkit-transition: -webkit-transform 1s;
+  -webkit-transition: -webkit-transform 1s;
 }
 .hover-rotate:hover {
--webkit-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
 }
 /* 通用select控件样式 */
 .common-select {
