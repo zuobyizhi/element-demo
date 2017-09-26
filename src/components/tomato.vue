@@ -1,15 +1,15 @@
 <template>
   <div class="hello">
 		<div class="common-row">
-			程度：
+      <span class="input-required">程度：</span>
       <select v-model="type" v-focus class='common-select'>
         <option value="0">请选择...</option>
         <option value="1">普通</option>
         <option value="2">重要</option>
       </select>
-			内容：
+			<span class="input-required">内容：</span>
 			<el-input class="common-input" v-model="msg"/>
-			倒计时：
+			<span class="input-required">倒计时：</span>
 			<el-input class="common-input" v-model="time"/>
       <el-button @click="addTimer" type="primary">确认</el-button>
 		</div>

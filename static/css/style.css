@@ -139,6 +139,11 @@
   word-break: break-all;
   word-wrap: break-word;
 }
+/* 必填的input,前面带红星 */
+.input-required:before {
+  content: "*";
+  color: red;
+}
 /* 旋转 */
 @-webkit-keyframes rotation{
   from {-webkit-transform: rotate(0deg);}
@@ -196,6 +201,33 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+/* 排行榜序号 */
+.chart-nth {
+  float: left;
+  color: #1482f0;
+  font-size: 16px;
+  border-radius: 2px;
+  margin-right: 10px;
+  width: 19px;
+  height: 19px;
+  text-align: center;
+  line-height: 19px;
+}
+.chart-nth.first {
+  background: #f33;
+  color: #fff;
+  padding-top: 1px;
+}
+.chart-nth.second {
+  background: #ff722b;
+  color: #fff;
+  padding-top: 1px;
+}
+.chart-nth.third {
+  background: #fa3;
+  color: #fff;
+  padding-top: 1px;
 }
 /* 文字半透明背景 */
 .text-shadow {
