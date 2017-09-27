@@ -56,7 +56,7 @@ export default {
 }
 .item {
   min-width: 20px;
-  margin: auto;
+  // margin: auto;
   margin-top: 10px;
   border-radius: 2px;
 }

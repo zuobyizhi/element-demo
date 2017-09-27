@@ -11,6 +11,7 @@
     <el-row>
       <el-col :span="18">
       <div>
+        <head-line class="side-item mediacy" :data="['最新']"></head-line>
         <div class="common-row">
           <div v-for="(item, index) in timer">
             <list-item :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
@@ -23,16 +24,20 @@
       </div>
       </el-col>
       <el-col :span="6">
-      <el-menu style="margin-top: 18px;" :default-active="String(Number($route.query.type || 0) + 1)" class="el-menu-vertical-demo gray-thin-border"
+      <head-line class="side-item mediacy" :data="['类型']"></head-line>
+      <el-menu style="margin-top: 6px;" :default-active="String(Number($route.query.type || 0) + 1)" class="el-menu-vertical-demo gray-thin-border"
       theme="white">
       <el-menu-item index="1" @click="showType=0">全部</el-menu-item>
       <el-menu-item index="2" @click="showType=1">普通</el-menu-item>
       <el-menu-item index="3" @click="showType=2">重要</el-menu-item>
       </el-menu>
+      <head-line class="side-item mediacy" :data="['卡片']"></head-line>
       <div v-for="(item, index) in timer.slice(0, 3)">
         <img-card :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
-        :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper" class="img-card"></img-card>
+        :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper" class="img-card side-item mediacy"></img-card>
       </div>
+      <head-line class="side-item mediacy" :data="['排行榜']"></head-line>
+      <chart class="side-item mediacy" :data="timer"></chart>
       </el-col>
     </el-row>
     <go-to-top class="gototop"></go-to-top>
@@ -55,6 +60,8 @@ import listItem from './eltodolistitem.vue'
 import goToTop from './gototop.vue'
 import carouselItem from './carouselitem.vue'
 import imgCard from './imgcard.vue'
+import headLine from './headline.vue'
+import chart from './chart.vue'
 const TYPE = [{desc: "普通", value: 1}, {desc: "重要", value: 2}]
 export default {
   name: 'hello',
@@ -167,6 +174,8 @@ export default {
     listItem,
     goToTop,
     imgCard,
+    headLine,
+    chart,
     carouselItem
   },
   mounted () {
@@ -196,8 +205,11 @@ export default {
   background-color: #fff;
 }
 .img-card {
-  width: 90%;
   height: 250px;
   // height: auto;
+}
+.side-item {
+  margin-bottom: 12px;
+  width: 90%;
 }
 </style>

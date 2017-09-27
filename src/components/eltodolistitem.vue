@@ -72,6 +72,9 @@ export default {
   background-color: #fff;
   margin-bottom: 12px;
 }
+.gray_thin_border {
+  border: 1px solid #ebebeb;
+}
 .item-content {
   margin: 5px;
   left: 0;
