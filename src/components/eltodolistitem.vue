@@ -2,7 +2,7 @@
   <div v-bind:class="{bottom_line: line, item_white_block: !line, gray_thin_border: !line}" class="item">
     <div :class="{displaynone: line}" class="head-pic-div img-scale float-left"><img class="img-self-adaptation" v-lazy="img"></img></div>
     <div class="msg-div float-left pos-relative">
-      <h3 class="item-title title-font-size align-left">{{shorten(content, 16, '...')}}</h3>
+      <h3 class="item-title title-font-size align-left text-hover">{{shorten(content, 16, '...')}}</h3>
       <div class="item-content line-feed content-font-size font-color-dark-gray align-left">{{shorten(content, 100, '...')}}</div>
       <div class="item-bottom tip-font-size font-color-light-gray">
         <ul class="inline">

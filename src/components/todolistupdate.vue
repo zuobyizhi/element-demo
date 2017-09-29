@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
 		<div class="btns">
-      <label class="input-required">类型：</label>
+      <label class="input-required input-title">类型：</label>
       <select v-focus v-model="type" class="common-select">
         <option value="0">请选择...</option>
         <option value="1">普通</option>
@@ -9,7 +9,7 @@
       </select>
 		</div>
 		<div class="btns">
-			<label class="input-required">内容：</label>
+			<label class="input-required input-title">内容：</label>
 			<el-input @keyup.enter.native="onEnter" style="width: 200px;" v-model="content"/>
 		</div>
 		<div class="btns">
@@ -127,10 +127,5 @@ export default {
   min-width: 600px;
   max-width: 1200px;
   margin: auto;
-}
-
-label {
-  width: 100px;
-  display:inline-block;
 }
 </style>

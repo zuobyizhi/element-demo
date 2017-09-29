@@ -1,7 +1,7 @@
 <template>
   <div class="fill-parent pos-relative ctrl">
     <div v-for="item in data" class="fill-parent">
-      <div class="inline head-line-item">{{item}}</div>
+      <div class="inline head-line-item underline">{{item}}</div>
     </div>
   </div>
 </template>
@@ -43,14 +43,5 @@ export default {
   color: #1482f0;
   font-size: 14px;
   line-height: 40px;
-}
-.head-line-item:after {
-  position: absolute;
-  content: "";
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #1482f0;
 }
 </style>

@@ -144,6 +144,11 @@
   content: "*";
   color: red;
 }
+/* 输入框的标题通用样式 */
+.input-title {
+  width: 100px;
+  display:inline-block;
+}
 /* 旋转 */
 @-webkit-keyframes rotation{
   from {-webkit-transform: rotate(0deg);}
@@ -176,6 +181,20 @@
 }
 .hover-rotate:hover {
   -webkit-transform: rotate(90deg);
+}
+/* 下划线 */
+.underline:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #1482f0;
+}
+/* 文字hover通用样式 */
+.text-hover:hover {
+  color: #1482f0;
 }
 /* 通用select控件样式 */
 .common-select {

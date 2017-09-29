@@ -1,14 +1,13 @@
 <template>
-  <div class="fill-parent item pos-relative bottom-line">
+  <div class="fill-parent ctrl pos-relative bottom-line">
     <ul class="fill-parent">
       <div class="chart-nth inline" :class="{first: idx===1, second: idx===2, third: idx==3}">{{idx}}</div>
-      <p class="inline align-left title">{{title}}</p>
+      <p class="inline align-left title text-hover">{{title}}</p>
     </ul>
   </div>
 </template>
 
 <script>
-// import * as utils from '../utils/utils.js'
 export default {
   name: 'hello',
   data () {
@@ -26,7 +25,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.item {
+.ctrl {
   min-height: 60px;
   background-color: #fff;
   padding: 10px;

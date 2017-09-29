@@ -1,34 +1,34 @@
 <template>
   <div class="hello">
 		<div class="btns">
-      <label>文字：</label>
-      <input class="inp" v-model="msg"/>
+      <label class="input-title">文字：</label>
+      <el-input class="common-input inp" v-model="msg"/>
 		</div>
 		<div class="btns">
-			<label>字体：</label>
-			<button @click="fontClass='songti'">宋体</button>
-			<button @click="fontClass='yahei'">雅黑</button>
-			<button @click="fontClass='heiti'">黑体</button>
-			<button @click="fontClass='Monaco'">Monaco</button>
+			<label class="input-title">字体：</label>
+			<el-button type="primary" @click="fontClass='songti'">宋体</el-button>
+			<el-button type="primary" @click="fontClass='yahei'">雅黑</el-button>
+			<el-button type="primary" @click="fontClass='heiti'">黑体</el-button>
+			<el-button type="primary" @click="fontClass='Monaco'">Monaco</el-button>
 		</div>
 		<div class="btns">
-			<label>大小：</label>
-			<input class="fontSize" v-model="fontSize"/>
+			<label class="input-title">大小：</label>
+			<el-input class="common-input fontSize" v-model="fontSize"/>
 		</div>
 		<div class="btns">
-			<label>字体颜色：</label>
-			<input v-model="activeColor"/>
+			<label class="input-title">字体颜色：</label>
+			<el-input class="common-input" v-model="activeColor"/>
 		</div>
 		<div class="btns">
-			<label>背景颜色：</label>
-			<input v-model="bgColor"/>
+			<label class="input-title">背景颜色：</label>
+			<el-input class="common-input" v-model="bgColor"/>
 		</div>
 		<div class="btns">
-			<label>粗度：</label>
-			<button @click="weightClass='normal'">normal</button>
-			<button @click="weightClass='bold'">bold</button>
-			<button @click="weightClass='bolder'">bolder</button>
-			<button @click="weightClass='lighter'">lighter</button>
+			<label class="input-title">粗度：</label>
+			<el-button type="primary" @click="weightClass='normal'">normal</el-button>
+			<el-button type="primary" @click="weightClass='bold'">bold</el-button>
+			<el-button type="primary" @click="weightClass='bolder'">bolder</el-button>
+			<el-button type="primary" @click="weightClass='lighter'">lighter</el-button>
 		</div>
     <h1 v-bind:class="[fontClass]" 
 			v-bind:style="{ color: activeColor, fontSize: fontSize + 'px', fontWeight: weightClass, backgroundColor: bgColor }">{{ msg }}</h1>
@@ -53,6 +53,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.common-input {
+  width: 200px;
+  margin: 0 12px 0 4px;
+}
 .songti {
 	font-family: "宋体"
 }
@@ -65,30 +69,8 @@ export default {
 .Monaco {
 	font-family: "Monaco"
 }
-.inp{
-	margin: 8px;
-}
-
-label {
-  width: 100px;
-  display:inline-block;
-}
 
 h1, h2 {
   font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 </style>

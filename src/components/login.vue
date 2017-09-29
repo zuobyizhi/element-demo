@@ -1,11 +1,11 @@
 <template>
   <div class="hello">
 		<div class="btns">
-      <label>帐号：</label>
+      <label class="input-title">帐号：</label>
       <el-input id="loginviewfocus" v-focus class="inp" v-model="acct" @keyup.enter.native="login"/>
 		</div>
 		<div class="btns">
-			<label>密码：</label>
+			<label class="input-title">密码：</label>
 			<el-input class="inp" v-model="password" @keyup.enter.native="login"/>
 		</div>
 		<div class="btns">
@@ -66,10 +66,5 @@ export default {
 .inp{
 	margin: 8px;
   width: 200px;
-}
-
-label {
-  width: 100px;
-  display:inline-block;
 }
 </style>

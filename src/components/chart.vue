@@ -1,5 +1,5 @@
 <template>
-  <div class="fill-parent pos-relative item">
+  <div class="fill-parent pos-relative ctrl">
     <div v-for="(item, index) in data" class="fill-parent">
       <!-- chart-item :title="item.content" :url="" :idx="index">
       </chart-item -->
@@ -28,7 +28,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.item {
+.ctrl {
   min-height: 30px;
   background-color: #fff;
 }

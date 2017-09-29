@@ -1,15 +1,15 @@
 <template>
   <div class="hello">
 		<div class="btns">
-      <label class="input-required">帐号：</label>
+      <label class="input-required input-title">帐号：</label>
       <el-input v-focus id="firstInput" class="inp" v-model="acct" @keyup.enter.native="register"/>
 		</div>
 		<div class="btns">
-			<label class="input-required">密码：</label>
+			<label class="input-required input-title">密码：</label>
 			<el-input class="inp" v-model="password" @keyup.enter.native="register"/>
 		</div>
 		<div class="btns">
-			<label class="input-required">确认密码：</label>
+			<label class="input-required input-title">确认密码：</label>
 			<el-input class="inp" v-model="pwAagin" @keyup.enter.native="register"/>
 		</div>
 		<div class="btns">
@@ -71,10 +71,5 @@ export default {
 .inp{
 	margin: 8px;
   width: 200px;
-}
-
-label {
-  width: 100px;
-  display:inline-block;
 }
 </style>
