@@ -1,8 +1,6 @@
 <template>
   <div class="fill-parent pos-relative ctrl">
     <div v-for="(item, index) in data" class="fill-parent">
-      <!-- chart-item :title="item.content" :url="" :idx="index">
-      </chart-item -->
       <chart-item :title="item.content" :url="msg" :idx="index + 1"></chart-item>
     </div>
   </div>

@@ -54,6 +54,13 @@
       <el-button type="primary" @click="deleteItem()">确 定</el-button>
     </span>
     </el-dialog>
+    <el-dialog
+    title="修改"
+    :visible.sync="updateVisible"
+    class="update-dlg"
+    >
+    <update-dlg :id="updateId" :dlgType="1" @updateItem="updateVisible = false"></update-dlg>
+    </el-dialog>
   </div>
 </template>
 
@@ -65,6 +72,7 @@ import carouselItem from './carouselitem.vue'
 import imgCard from './imgcard.vue'
 import headLine from './headline.vue'
 import chart from './chart.vue'
+import updateDlg from './todolistupdatedlg.vue'
 const TYPE = [{desc: "普通", value: 1}, {desc: "重要", value: 2}]
 export default {
   name: 'hello',
@@ -77,7 +85,9 @@ export default {
       during: [],
       showType: 0,
       dialogVisible: false,
+      updateVisible: false,
       deleteId: 0,
+      updateId: 0,
       total: 0,     // 记录总条数
       display: 10,   // 每页显示条数
       current: 1   // 当前的页数
@@ -117,8 +127,10 @@ export default {
       this.$router.push({path: '/todolistadd'})
     },
     updateItem (id) {
-      this.$router.push({path: '/todolistupdate',
-      query: {id: id}})
+      // this.$router.push({path: '/todolistupdate',
+      // query: {id: id}})
+      this.updateVisible = true
+      this.updateId = id
     },
     chkLogin (fnSucc, fnFail) {
       const url = this.HOST + '/users/chklogin'
@@ -185,6 +197,7 @@ export default {
     goToTop,
     imgCard,
     headLine,
+    updateDlg,
     chart,
     carouselItem
   },
@@ -221,5 +234,10 @@ export default {
 .side-item {
   margin-bottom: 12px;
   width: 90%;
+}
+.update-dlg {
+  width: auto;
+  height: auto;
+  padding-right: 20px;
 }
 </style>
