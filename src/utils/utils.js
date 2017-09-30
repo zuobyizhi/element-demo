@@ -144,3 +144,24 @@ export function midNum (num, up, down) {
     return up
   }
 }
+
+/**
+ * 随机返回arr里面的某一项
+ * @param {Array} arr
+ * @return {object}
+ */
+export function randArr (arr) {
+  const rand1 = Math.floor(Math.random() * arr.length)
+  return arr[rand1]
+}
+
+/**
+ * 打乱arr的顺序
+ * @param {Array} arr
+ * @return {Array}
+ */
+export function upsetArr (arr) {
+  arr.sort(function (a, b) {
+    return Math.random() > 0.5 ? -1 : 1
+  })
+}

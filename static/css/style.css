@@ -214,6 +214,15 @@
 .common-select:hover {
   border-color: #8391a5;
 }
+/* 鼠标变成手型 */
+.cursor-pointer {
+  cursor: pointer;
+}
+/* 圆形样式 */
+.round {
+  border-radius: 50%;
+  border: none;
+}
 /* 像<a>一样的按钮 */
 .a-btn {
   color: #20a0ff;

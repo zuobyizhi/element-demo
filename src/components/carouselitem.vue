@@ -1,7 +1,7 @@
 <template>
   <div class="fill-parent pos-relative" @click="updateItem">
     <div class="img-scale fill-parent">
-      <img class="img-self-adaptation" src="http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg"></img>
+      <img class="img-self-adaptation" v-lazy="img"></img>
     </div>
     <div class="font-color-white item-bottom text-shadow title-font-size pointerevents-none line-feed">
       <div class="item-bottom padding-8px title-font-size">{{shorten(content, 40, '...')}}</div>
@@ -23,6 +23,7 @@ export default {
     title: String,
     time: String,
     type: String,
+    img: String,
     itemId: Number
   },
   methods: {

@@ -14,8 +14,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: '',
-      img: 'http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg'
+      msg: ''
     }
   },
   props: {
@@ -23,6 +22,7 @@ export default {
     title: String,
     time: String,
     type: String,
+    img: String,
     itemId: Number
   },
   methods: {

@@ -4,6 +4,7 @@
       <el-carousel indicator-position="outside"  type="card">
       <el-carousel-item v-for="item in timer.slice(0, 4)" :key="item.id">
       <carousel-item :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
+      :img="randImg()"
       :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></carousel-item>
       </el-carousel-item>
       </el-carousel>
@@ -15,6 +16,7 @@
         <div class="common-row">
           <div v-for="(item, index) in timer">
             <list-item :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
+            :img="'http://scimg.jb51.net/allimg/120502/2-12050215122K57.jpg'"
             :type="getTypeName(item.type)" :line="true" @updateItem="updateItem" @deleteItem="deleteItemWrapper"></list-item>
           </div>
         </div>
@@ -34,6 +36,7 @@
       <head-line class="side-item mediacy" :data="['卡片']"></head-line>
       <div v-for="(item, index) in timer.slice(0, 3)">
         <img-card :itemId="item.id" :title="item.content" :content="item.content" :time="getDate(item.createtime)"
+        :img="randImg()"
         :type="getTypeName(item.type)" @updateItem="updateItem" @deleteItem="deleteItemWrapper" class="img-card side-item mediacy"></img-card>
       </div>
       <head-line class="side-item mediacy" :data="['排行榜']"></head-line>
@@ -159,6 +162,13 @@ export default {
         }
       }
       return "普通"
+    },
+    randImg () {
+      const imgs = ['https://wpimg.wallstcn.com/816f84cf-6d4f-4eaf-a137-73ed2d32b892.png?imageView2/1/w/190/h/190',
+      'https://wpimg.wallstcn.com/fca7acef-e9c6-439c-a360-79f714226da2.jpg?imageView2/1/w/190/h/190',
+      'https://wpimg.wallstcn.com/340174aa-e82a-4a33-9404-5c1363ddb972.jpg?imageView2/1/w/190/h/190',
+      'https://wpimg.wallstcn.com/5e426bd3-f744-4399-86d5-6eb4f319094d.png?imageView2/1/w/190/h/190']
+      return utils.randArr(imgs)
     },
     getDate(shijianchuo) {
       //shijianchuo是整数，否则要parseInt转换
