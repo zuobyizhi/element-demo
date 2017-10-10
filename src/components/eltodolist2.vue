@@ -240,7 +240,6 @@ export default {
 .img-card {
   width: 90%;
   min-height: 250px;
-  // height: auto;
   height: 250px;
 }
 .side-item {

@@ -27,6 +27,15 @@
       </el-col>
       <el-col :span="6">
       <head-line class="side-item mediacy" :data="['类型']"></head-line>
+      <el-popover ref="popover4" placement="bottom" width="400" trigger="hover">
+      <el-table :data="timer.slice(0, 4)">
+      <el-table-column width="100" property="type" label="类型"></el-table-column>
+      <el-table-column width="200" property="content" label="内容"></el-table-column>
+      <el-table-column width="300" property="content" label="地址"></el-table-column>
+      </el-table>
+      </el-popover>
+      <el-button v-popover:popover4>hover 激活</el-button>
+      <head-line class="side-item mediacy" :data="['类型']"></head-line>
       <el-menu style="margin-top: 6px;" :default-active="String(Number($route.query.type || 0) + 1)" class="el-menu-vertical-demo gray-thin-border"
       theme="white">
       <el-menu-item index="1" @click="showType=0">全部</el-menu-item>
@@ -127,8 +136,6 @@ export default {
       this.$router.push({path: '/todolistadd'})
     },
     updateItem (id) {
-      // this.$router.push({path: '/todolistupdate',
-      // query: {id: id}})
       this.updateVisible = true
       this.updateId = id
     },
@@ -229,7 +236,6 @@ export default {
 }
 .img-card {
   height: 250px;
-  // height: auto;
 }
 .side-item {
   margin-bottom: 12px;
